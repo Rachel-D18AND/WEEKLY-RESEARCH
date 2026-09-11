@@ -144,8 +144,8 @@
 </div>
 
 <div class="filterbar" style="margin-left:28px;">
-  <button id="filterAll" class="active" onclick="filterCards('all')">전체 보기</button>
-  <button id="filterNew" onclick="filterCards('new')">🆕 NEW만 보기 (59)</button>
+  <button id="filterAll" onclick="filterCards('all')">전체 보기</button>
+  <button id="filterNew" class="active" onclick="filterCards('new')">🆕 NEW만 보기 (59)</button>
 </div>
 
 <div class="note"><b>Snapshot 2026-09 Week 2</b> &middot; 지금은 T.com 화면을 캡처해 수동으로 정리한 스냅샷입니다. 격주 자동 수집은 다음 단계로 준비 중이에요.</div>
@@ -156,22 +156,216 @@
   <span class="cnt">85 styles</span>
   <span class="desc">Tops, Tees, Knits, Shirts, Jackets</span>
 </div>
-<div class="subfilter">
+<div class="subfilter" id="subfilter-tops">
   <div class="grp">
-    <button class="active" onclick="setDept('tops','all',this)">전체</button>
-    <button onclick="setDept('tops','018',this)">018 (58)</button>
-    <button onclick="setDept('tops','349',this)">349 (27)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setDept('tops','all',this)">전체</button>
+    <button data-val="018" data-label="018" onclick="setDept('tops','018',this)">018 (58)</button>
+    <button data-val="349" data-label="349" onclick="setDept('tops','349',this)">349 (27)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('tops','all',this)">전체</button>
-    <button onclick="setCat('tops','KNIT',this)">KNIT (23)</button>
-    <button onclick="setCat('tops','WOVEN',this)">WOVEN (11)</button>
-    <button onclick="setCat('tops','SWEATER',this)">SWEATER (18)</button>
-    <button onclick="setCat('tops','JACKET',this)">JACKET (5)</button>
-    <button onclick="setCat('tops','OUTERWEAR',this)">OUTERWEAR (1)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setCat('tops','all',this)">전체</button>
+    <button data-val="KNIT" data-label="KNIT" onclick="setCat('tops','KNIT',this)">KNIT (23)</button>
+    <button data-val="WOVEN" data-label="WOVEN" onclick="setCat('tops','WOVEN',this)">WOVEN (11)</button>
+    <button data-val="SWEATER" data-label="SWEATER" onclick="setCat('tops','SWEATER',this)">SWEATER (18)</button>
+    <button data-val="JACKET" data-label="JACKET" onclick="setCat('tops','JACKET',this)">JACKET (5)</button>
+    <button data-val="OUTERWEAR" data-label="OUTERWEAR" onclick="setCat('tops','OUTERWEAR',this)">OUTERWEAR (1)</button>
   </div>
 </div>
 <div class="grid">
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-mesh-top-a-new-day-8482-cream-xxl/-/A-1009380422" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a58c7c20-ffcf-43e8-830e-4c392e60a196?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mesh Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fbc66fc0-11a6-46e1-b949-26a92fed0552?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-mesh-top-a-new-day-8482-cream-xxl/-/A-1009380422" target="_blank" rel="noopener">Women&#39;s Mesh Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-3723</span><span class="badge own">018</span></div>
+      <div class="material">Mesh, 95% Recycled Polyester, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-knit-tank-top-a-new-day-8482-black-m/-/A-95252628" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f5f3d7ff-b5eb-4bd4-a939-0e70089cdf2f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Knit Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b9f475ae-ba51-4fd5-a01a-1b5b25426be7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-knit-tank-top-a-new-day-8482-black-m/-/A-95252628" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Knit Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-20-0256</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-ribbed-t-shirt-a-new-day-8482-burgundy-m/-/A-1008746458" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_98bee272-75f5-4566-90e1-730771fdb66f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Ribbed T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a0bba346-da5d-4064-bccc-cabc633dfa7a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-short-sleeve-ribbed-t-shirt-a-new-day-8482-burgundy-m/-/A-1008746458" target="_blank" rel="noopener">Women&#39;s Short Sleeve Ribbed T-Shirt - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-00-0897</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 48% Cotton, 47% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-ribbed-collared-button-up-top-a-new-day-8482-white-m/-/A-95247380" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7467f08b-9aef-4416-afcb-b5eec70dfe20?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ribbed Collared Button-Up Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_f24db53e-12b8-4968-a9f3-db146d300736?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-ribbed-collared-button-up-top-a-new-day-8482-white-m/-/A-95247380" target="_blank" rel="noopener">Women&#39;s Ribbed Collared Button-Up Top - A New Day™</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-6143</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 56% Cotton, 37% Modal, 7% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-top-a-new-day-8482-black-m/-/A-95236728" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_008ec1b9-c075-47fc-9325-d3ee4f9f0dbd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_38f2f03d-590b-4941-8f79-e20a63d9f27d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-top-a-new-day-8482-black-m/-/A-95236728" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-00-4224</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-long-sleeve-featherweight-boat-neck-ruched-t-shirt-a-new-day-8482-brown-m/-/A-95254081" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_1ef25fc2-59f0-4809-bca5-35923c24e6f2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Featherweight Boat Neck Ruched T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_4d179e0b-e1a5-45ce-9edb-bfb13b9e9f5e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-long-sleeve-featherweight-boat-neck-ruched-t-shirt-a-new-day-8482-brown-m/-/A-95254081" target="_blank" rel="noopener">Women&#39;s Long Sleeve Featherweight Boat Neck Ruched T-Shirt - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-6245</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 65% Recycled Polyester, 35% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-long-sleeve-mesh-ruched-t-shirt-a-new-day-8482-dark-olive-green-l/-/A-95254106" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_563e924c-3929-4639-8643-260e2f15c549?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Mesh Ruched T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a00fc28e-36e6-478f-8119-0b74c67ac8c8?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-long-sleeve-mesh-ruched-t-shirt-a-new-day-8482-dark-olive-green-l/-/A-95254106" target="_blank" rel="noopener">Women&#39;s Long Sleeve Mesh Ruched T-Shirt - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-8370</span><span class="badge own">018</span></div>
+      <div class="material">Mesh, 95% Recycled Polyester, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-top-a-new-day-8482-leopard-xl/-/A-95250792" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_3f85d84c-9b0a-4ab0-b792-efd0e8ff06e5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey One Shoulder Ruched Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1b917199-ae7d-459e-8988-79c86bdbd0c4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-top-a-new-day-8482-leopard-xl/-/A-95250792" target="_blank" rel="noopener">Women&#39;s Modern Jersey One Shoulder Ruched Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-4130</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-ribbed-tank-top-a-new-day-8482-white-m/-/A-1011118872" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_dfd9c357-1c9d-48fd-9c3a-33d10654b818?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Ribbed Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ca211818-e91a-4565-858c-5fc28703c124?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-ribbed-tank-top-a-new-day-8482-white-m/-/A-1011118872" target="_blank" rel="noopener">Women&#39;s Modern Ribbed Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-20-0626</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 56% Cotton, 37% Modacrylic, 7% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-cap-sleeve-boat-neck-t-shirt-a-new-day-8482-olive-green-m/-/A-1011093901" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0e202c2c-49ad-4508-bfbf-96325b44600a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cap Sleeve Boat Neck T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9dcd85cc-8e2b-432c-8b38-e7d51e02f12e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-cap-sleeve-boat-neck-t-shirt-a-new-day-8482-olive-green-m/-/A-1011093901" target="_blank" rel="noopener">Women&#39;s Cap Sleeve Boat Neck T-Shirt - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-20-0575</span><span class="badge own">018</span></div>
+      <div class="material">Knit, 51% Cotton, 5% Recycled Cotton, 37% Modal, 7% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-relaxed-fit-perfect-t-shirt-a-new-day-8482-heather-gray-m/-/A-95234916" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bb742d7c-917c-4388-8e2b-c33d9ca1265e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Perfect T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fa037aa8-5230-45e2-ba5c-3d211e9cff7d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-short-sleeve-relaxed-fit-perfect-t-shirt-a-new-day-8482-heather-gray-m/-/A-95234916" target="_blank" rel="noopener">Women&#39;s Short Sleeve Perfect T-Shirt - A New Day™</a>
+      <div class="price">$6.80</div>
+      <div class="dpci-row"><span class="dpci">018-00-4330</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 60% Cotton, 40% Modal</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-featherweight-turtleneck-top-a-new-day-8482-black-l/-/A-95237091" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_23095885-b937-4638-86fb-d9565714f3a9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Featherweight Turtleneck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_d14d26c1-73c8-4c3b-8dc7-068ce16ead05?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-featherweight-turtleneck-top-a-new-day-8482-black-l/-/A-95237091" target="_blank" rel="noopener">Women&#39;s Featherweight Turtleneck Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-20-0157</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 66% Recycled Polyester, 23% Rayon, 5% Spandex, 3% Silk, 3% Wool</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-off-the-shoulder-hardware-long-sleeve-top-a-new-day-8482-black-m/-/A-95237485" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_57b7e738-6dbc-4864-a43b-0df6b3416db7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Off the Shoulder Hardware Long Sleeve Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1aa2c69d-cd2a-4a80-a3b4-c71cb96e3778?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-off-the-shoulder-hardware-long-sleeve-top-a-new-day-8482-black-m/-/A-95237485" target="_blank" rel="noopener">Women&#39;s Modern Jersey Off the Shoulder Hardware Long Sleeve Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-3627</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-flutter-short-sleeve-t-shirt-a-new-day-8482-black-m/-/A-1011090188" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_4fb5bcf3-ff70-484f-a928-ffbb693eac19?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Flutter Short Sleeve T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9c064692-6f7f-4941-8bfe-3762e002cb8f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-flutter-short-sleeve-t-shirt-a-new-day-8482-black-m/-/A-1011090188" target="_blank" rel="noopener">Women&#39;s Flutter Short Sleeve T-Shirt - A New Day™</a>
+      <div class="price">$12.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-5536</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-cowl-open-back-long-sleeve-top-a-new-day-8482-brown-s/-/A-95234968" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bcc7d1a2-c8e3-4435-910f-cfd00ccb8fad?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Modern Jersey Cowl Open Back Boat Neck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_79992c4b-88e2-4625-a258-7cf0f3751fae?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-cowl-open-back-long-sleeve-top-a-new-day-8482-brown-s/-/A-95234968" target="_blank" rel="noopener">Women&#39;s Long Sleeve Modern Jersey Cowl Open Back Boat Neck Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-7540</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-side-ruched-double-layered-shirring-tank-top-a-new-day-8482-black-m/-/A-1007911853" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d650b6ff-432b-48b1-aefe-79ce48a00ba6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Side Ruched Double Layered Shirring Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e7c5055a-2435-4b91-bff2-5b1117958213?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-side-ruched-double-layered-shirring-tank-top-a-new-day-8482-black-m/-/A-1007911853" target="_blank" rel="noopener">Women&#39;s Modern Jersey Side Ruched Double Layered Shirring Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-1930</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-boat-neck-top-a-new-day-8482-white-m/-/A-95236633" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d68472f8-b449-450d-ad3d-d33760501aae?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Three Quarter Sleeve Refined Ribbed Boat Neck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_13b7200a-faf3-42a1-8689-831086aa64e9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-boat-neck-top-a-new-day-8482-white-m/-/A-95236633" target="_blank" rel="noopener">Women&#39;s Three Quarter Sleeve Refined Ribbed Boat Neck Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-20-0146</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-wide-straps-contour-tank-bodysuit-a-new-day-8482-black-3x/-/A-95247260" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a01d3001-82bf-41f4-9ce0-d708782999d3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Wide Straps Contour Tank Bodysuit - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fa61f596-3419-4d28-838f-0e780f91c45e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-wide-straps-contour-tank-bodysuit-a-new-day-8482-black-3x/-/A-95247260" target="_blank" rel="noopener">Women&#39;s Wide Straps Contour Tank Bodysuit - A New Day™</a>
+      <div class="price">$20.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-0192</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 93% Nylon, 7% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-shaped-t-shirt-a-new-day-8482-white-m/-/A-95247302" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bfa34f6d-bdfc-456c-ac59-ad44915ccd1c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Shaped T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_71118a2a-4bb2-4252-b049-a797abf70a69?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-shaped-t-shirt-a-new-day-8482-white-m/-/A-95247302" target="_blank" rel="noopener">Women&#39;s Shaped T-Shirt - A New Day™</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-0196</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 56% Cotton, 37% Modal, 7% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-tank-top-a-new-day-8482-black-l/-/A-95250759" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9c82668c-7f9a-492c-bdbc-d72913dd854a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Cowl Neck Short Sleeve Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_cc7b2ee5-0d2f-4c56-a55c-5c8094b6a30b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-tank-top-a-new-day-8482-black-l/-/A-95250759" target="_blank" rel="noopener">Women&#39;s Modern Jersey Cowl Neck Short Sleeve Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-4072</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-ribbed-muscle-pullover-tank-top-a-new-day-8482-green-xs/-/A-1011093867" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_aa77b162-de41-40ac-b01d-9bee2a9d3a36?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ribbed Muscle Pullover Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_bd97cc2a-a815-46c0-a897-db19f10a3559?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-ribbed-muscle-pullover-tank-top-a-new-day-8482-green-xs/-/A-1011093867" target="_blank" rel="noopener">Women&#39;s Ribbed Muscle Pullover Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-00-7075</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 48% Cotton, 47% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-hardware-tank-top-a-new-day-8482-maroon-m/-/A-1011090243" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_baef110d-5f15-48e3-974d-dd7232c63587?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Hardware Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5c64fb42-32bd-4926-bc11-eec975a79ac9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-hardware-tank-top-a-new-day-8482-maroon-m/-/A-1011090243" target="_blank" rel="noopener">Women&#39;s Hardware Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-3639</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/women-39-s-rolled-modern-ribbed-tank-top-a-new-day-8482-black-m/-/A-95247215" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e76ac29d-e270-429c-b4cb-3eb6cd5af29b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Rolled Modern Ribbed Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5b8791e9-3bdc-4db0-b436-42a181a60a2e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/women-39-s-rolled-modern-ribbed-tank-top-a-new-day-8482-black-m/-/A-95247215" target="_blank" rel="noopener">Women&#39;s Rolled Modern Ribbed Tank Top - A New Day™</a>
+      <div class="dpci-row"><span class="dpci">018-01-4936</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 48% Cotton, 47% Viscose, 5% Spandex</div>
+    </div>
+  </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
     <span class="newribbon">NEW</span>
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-johnny-collar-pullover-sweater-t-shirt-a-new-day-8482-brown-s/-/A-95091318" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_db048ab3-2612-4de7-bf75-63067895f8d7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Johnny Collar Pullover Sweater T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_3a285fba-698e-41b0-bfef-8cf6b6488d4c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
@@ -216,14 +410,6 @@
       <div class="material">Woven, 85% Rayon, 15% Nylon</div>
     </div>
   </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-mesh-top-a-new-day-8482-cream-xxl/-/A-1009380422" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a58c7c20-ffcf-43e8-830e-4c392e60a196?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mesh Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fbc66fc0-11a6-46e1-b949-26a92fed0552?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-mesh-top-a-new-day-8482-cream-xxl/-/A-1009380422" target="_blank" rel="noopener">Women&#39;s Mesh Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-3723</span><span class="badge own">018</span></div>
-      <div class="material">Mesh, 95% Recycled Polyester, 5% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-high-neck-mesh-t-shirt-a-new-day-8482-black-xl/-/A-1012532868" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_c67161cc-d4e1-4de1-b893-0e4ae242fdb3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve High Neck Mesh T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ee1424e4-acf6-41b3-b7b3-8415f9a4a612?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
     <div class="meta">
@@ -242,14 +428,6 @@
       <div class="material">Jersey, 60% Recycled Polyester, 30% Nylon, 10% Wool</div>
     </div>
   </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-knit-tank-top-a-new-day-8482-black-m/-/A-95252628" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f5f3d7ff-b5eb-4bd4-a939-0e70089cdf2f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Knit Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b9f475ae-ba51-4fd5-a01a-1b5b25426be7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-knit-tank-top-a-new-day-8482-black-m/-/A-95252628" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Knit Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-20-0256</span><span class="badge own">018</span></div>
-      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
     <span class="newribbon">NEW</span>
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-puff-sleeve-top-a-new-day-8482-navy-blue-s/-/A-1009293948" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d3170d34-d665-4a5b-bd41-f6fa4cd217ed?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Puff Sleeve Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_6391f251-cb9a-463d-be67-e569c820227a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
@@ -260,40 +438,6 @@
       <div class="material">Woven, 86% Rayon, 14% Nylon</div>
     </div>
   </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-ribbed-t-shirt-a-new-day-8482-burgundy-m/-/A-1008746458" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_98bee272-75f5-4566-90e1-730771fdb66f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Ribbed T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a0bba346-da5d-4064-bccc-cabc633dfa7a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-short-sleeve-ribbed-t-shirt-a-new-day-8482-burgundy-m/-/A-1008746458" target="_blank" rel="noopener">Women&#39;s Short Sleeve Ribbed T-Shirt - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-00-0897</span><span class="badge own">018</span></div>
-      <div class="material">2 x 2 Rib, 48% Cotton, 47% Rayon, 5% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
-    <span class="newribbon">NEW</span>
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-ribbed-collared-button-up-top-a-new-day-8482-white-m/-/A-95247380" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7467f08b-9aef-4416-afcb-b5eec70dfe20?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ribbed Collared Button-Up Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_f24db53e-12b8-4968-a9f3-db146d300736?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-ribbed-collared-button-up-top-a-new-day-8482-white-m/-/A-95247380" target="_blank" rel="noopener">Women&#39;s Ribbed Collared Button-Up Top - A New Day™</a>
-      <div class="price">$18.00</div>
-      <div class="dpci-row"><span class="dpci">018-01-6143</span><span class="badge own">018</span></div>
-      <div class="material">2 x 2 Rib, 56% Cotton, 37% Modal, 7% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-top-a-new-day-8482-black-m/-/A-95236728" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_008ec1b9-c075-47fc-9325-d3ee4f9f0dbd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_38f2f03d-590b-4941-8f79-e20a63d9f27d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-top-a-new-day-8482-black-m/-/A-95236728" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-00-4224</span><span class="badge own">018</span></div>
-      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-long-sleeve-featherweight-boat-neck-ruched-t-shirt-a-new-day-8482-brown-m/-/A-95254081" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_1ef25fc2-59f0-4809-bca5-35923c24e6f2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Featherweight Boat Neck Ruched T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_4d179e0b-e1a5-45ce-9edb-bfb13b9e9f5e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-long-sleeve-featherweight-boat-neck-ruched-t-shirt-a-new-day-8482-brown-m/-/A-95254081" target="_blank" rel="noopener">Women&#39;s Long Sleeve Featherweight Boat Neck Ruched T-Shirt - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-6245</span><span class="badge own">018</span></div>
-      <div class="material">1 x 1 Rib, 65% Recycled Polyester, 35% Rayon</div>
-    </div>
-  </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
     <span class="newribbon">NEW</span>
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-button-up-sweater-cardigan-a-new-day-8482-black-argyle-l/-/A-95150057" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_956ffe5b-9a70-4837-997c-55e8b365c9ee?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Button-Up Sweater Cardigan - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_28d2075b-465f-4d3e-88ea-8a6b4e30706b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
@@ -302,14 +446,6 @@
       <div class="price">$25.00</div>
       <div class="dpci-row"><span class="dpci">018-14-3858</span><span class="badge own">018</span></div>
       <div class="material">Jersey, 55% Cotton, 23% Recycled Polyester, 22% Polyester</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-long-sleeve-mesh-ruched-t-shirt-a-new-day-8482-dark-olive-green-l/-/A-95254106" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_563e924c-3929-4639-8643-260e2f15c549?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Mesh Ruched T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a00fc28e-36e6-478f-8119-0b74c67ac8c8?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-long-sleeve-mesh-ruched-t-shirt-a-new-day-8482-dark-olive-green-l/-/A-95254106" target="_blank" rel="noopener">Women&#39;s Long Sleeve Mesh Ruched T-Shirt - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-8370</span><span class="badge own">018</span></div>
-      <div class="material">Mesh, 95% Recycled Polyester, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
@@ -326,14 +462,6 @@
       <a class="pname" href="https://www.target.com/p/women-39-s-corset-trim-tank-top-a-new-day-8482-black-brown-check-s/-/A-95112942" target="_blank" rel="noopener">Women&#39;s Corset Trim Tank Top - A New Day™ Black/Brown Check</a>
       <div class="dpci-row"><span class="dpci">018-02-6186</span><span class="badge own">018</span></div>
       <div class="material">Woven, 60% Cotton, 40% Rayon</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-top-a-new-day-8482-leopard-xl/-/A-95250792" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_3f85d84c-9b0a-4ab0-b792-efd0e8ff06e5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey One Shoulder Ruched Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1b917199-ae7d-459e-8988-79c86bdbd0c4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-top-a-new-day-8482-leopard-xl/-/A-95250792" target="_blank" rel="noopener">Women&#39;s Modern Jersey One Shoulder Ruched Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-4130</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
@@ -416,54 +544,12 @@
       <div class="material">Woven, 100% Polyester</div>
     </div>
   </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-ribbed-tank-top-a-new-day-8482-white-m/-/A-1011118872" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_dfd9c357-1c9d-48fd-9c3a-33d10654b818?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Ribbed Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ca211818-e91a-4565-858c-5fc28703c124?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-ribbed-tank-top-a-new-day-8482-white-m/-/A-1011118872" target="_blank" rel="noopener">Women&#39;s Modern Ribbed Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-20-0626</span><span class="badge own">018</span></div>
-      <div class="material">2 x 2 Rib, 56% Cotton, 37% Modacrylic, 7% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-double-placket-top-a-new-day-8482-navy-blue-l/-/A-1012761002" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_5e5fbf40-8293-4e70-a581-35e0d5e5e263?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Double Placket Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_79bac082-3287-4e0b-b9f8-473a12a17ecf?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
     <div class="meta">
       <a class="pname" href="https://www.target.com/p/women-39-s-double-placket-top-a-new-day-8482-navy-blue-l/-/A-1012761002" target="_blank" rel="noopener">Women&#39;s Double Placket Top - A New Day™</a>
       <div class="dpci-row"><span class="dpci">349-00-4515</span><span class="badge ref">D349</span></div>
       <div class="material">Woven, 85% Rayon, 15% Nylon</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-cap-sleeve-boat-neck-t-shirt-a-new-day-8482-olive-green-m/-/A-1011093901" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0e202c2c-49ad-4508-bfbf-96325b44600a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cap Sleeve Boat Neck T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9dcd85cc-8e2b-432c-8b38-e7d51e02f12e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-cap-sleeve-boat-neck-t-shirt-a-new-day-8482-olive-green-m/-/A-1011093901" target="_blank" rel="noopener">Women&#39;s Cap Sleeve Boat Neck T-Shirt - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-20-0575</span><span class="badge own">018</span></div>
-      <div class="material">Knit, 51% Cotton, 5% Recycled Cotton, 37% Modal, 7% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
-    <span class="newribbon">NEW</span>
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-relaxed-fit-perfect-t-shirt-a-new-day-8482-heather-gray-m/-/A-95234916" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bb742d7c-917c-4388-8e2b-c33d9ca1265e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Perfect T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fa037aa8-5230-45e2-ba5c-3d211e9cff7d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-short-sleeve-relaxed-fit-perfect-t-shirt-a-new-day-8482-heather-gray-m/-/A-95234916" target="_blank" rel="noopener">Women&#39;s Short Sleeve Perfect T-Shirt - A New Day™</a>
-      <div class="price">$6.80</div>
-      <div class="dpci-row"><span class="dpci">018-00-4330</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 60% Cotton, 40% Modal</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-featherweight-turtleneck-top-a-new-day-8482-black-l/-/A-95237091" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_23095885-b937-4638-86fb-d9565714f3a9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Featherweight Turtleneck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_d14d26c1-73c8-4c3b-8dc7-068ce16ead05?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-featherweight-turtleneck-top-a-new-day-8482-black-l/-/A-95237091" target="_blank" rel="noopener">Women&#39;s Featherweight Turtleneck Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-20-0157</span><span class="badge own">018</span></div>
-      <div class="material">1 x 1 Rib, 66% Recycled Polyester, 23% Rayon, 5% Spandex, 3% Silk, 3% Wool</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-off-the-shoulder-hardware-long-sleeve-top-a-new-day-8482-black-m/-/A-95237485" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_57b7e738-6dbc-4864-a43b-0df6b3416db7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Off the Shoulder Hardware Long Sleeve Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1aa2c69d-cd2a-4a80-a3b4-c71cb96e3778?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-off-the-shoulder-hardware-long-sleeve-top-a-new-day-8482-black-m/-/A-95237485" target="_blank" rel="noopener">Women&#39;s Modern Jersey Off the Shoulder Hardware Long Sleeve Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-3627</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
@@ -474,24 +560,6 @@
       <div class="price">$38.00</div>
       <div class="dpci-row"><span class="dpci">018-14-3980</span><span class="badge own">018</span></div>
       <div class="material">Knit, 91% Cotton, 9% Nylon</div>
-    </div>
-  </div>
-  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
-    <span class="newribbon">NEW</span>
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-flutter-short-sleeve-t-shirt-a-new-day-8482-black-m/-/A-1011090188" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_4fb5bcf3-ff70-484f-a928-ffbb693eac19?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Flutter Short Sleeve T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9c064692-6f7f-4941-8bfe-3762e002cb8f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-flutter-short-sleeve-t-shirt-a-new-day-8482-black-m/-/A-1011090188" target="_blank" rel="noopener">Women&#39;s Flutter Short Sleeve T-Shirt - A New Day™</a>
-      <div class="price">$12.00</div>
-      <div class="dpci-row"><span class="dpci">018-01-5536</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-cowl-open-back-long-sleeve-top-a-new-day-8482-brown-s/-/A-95234968" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bcc7d1a2-c8e3-4435-910f-cfd00ccb8fad?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Modern Jersey Cowl Open Back Boat Neck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_79992c4b-88e2-4625-a258-7cf0f3751fae?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-cowl-open-back-long-sleeve-top-a-new-day-8482-brown-s/-/A-95234968" target="_blank" rel="noopener">Women&#39;s Long Sleeve Modern Jersey Cowl Open Back Boat Neck Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-7540</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
@@ -546,14 +614,6 @@
       <div class="material">2 x 2 Rib, 55% Cotton, 45% Recycled Nylon</div>
     </div>
   </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-side-ruched-double-layered-shirring-tank-top-a-new-day-8482-black-m/-/A-1007911853" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d650b6ff-432b-48b1-aefe-79ce48a00ba6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Side Ruched Double Layered Shirring Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e7c5055a-2435-4b91-bff2-5b1117958213?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-side-ruched-double-layered-shirring-tank-top-a-new-day-8482-black-m/-/A-1007911853" target="_blank" rel="noopener">Women&#39;s Modern Jersey Side Ruched Double Layered Shirring Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-1930</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="JACKET">
     <span class="newribbon">NEW</span>
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-collared-corduroy-blazer-a-new-day-8482-navy-blue-xl/-/A-95228547" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_dcb3ada0-70e1-4d2b-a818-3d0f80c560e5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Collared Corduroy Blazer - A New Day™ Navy Blue" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_312e1280-58db-41d9-8c96-8e14080d9ae2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
@@ -600,14 +660,6 @@
       <div class="price">$50.00</div>
       <div class="dpci-row"><span class="dpci">018-06-1608</span><span class="badge own">018</span></div>
       <div class="material">Twill, 58% Cotton, 40% Recycled Polyester, 2% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-refined-ribbed-boat-neck-top-a-new-day-8482-white-m/-/A-95236633" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d68472f8-b449-450d-ad3d-d33760501aae?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Three Quarter Sleeve Refined Ribbed Boat Neck Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_13b7200a-faf3-42a1-8689-831086aa64e9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-refined-ribbed-boat-neck-top-a-new-day-8482-white-m/-/A-95236633" target="_blank" rel="noopener">Women&#39;s Three Quarter Sleeve Refined Ribbed Boat Neck Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-20-0146</span><span class="badge own">018</span></div>
-      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
@@ -666,16 +718,6 @@
       <div class="material">Woven, 100% Recycled Polyester</div>
     </div>
   </div>
-  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
-    <span class="newribbon">NEW</span>
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-wide-straps-contour-tank-bodysuit-a-new-day-8482-black-3x/-/A-95247260" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a01d3001-82bf-41f4-9ce0-d708782999d3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Wide Straps Contour Tank Bodysuit - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fa61f596-3419-4d28-838f-0e780f91c45e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-wide-straps-contour-tank-bodysuit-a-new-day-8482-black-3x/-/A-95247260" target="_blank" rel="noopener">Women&#39;s Wide Straps Contour Tank Bodysuit - A New Day™</a>
-      <div class="price">$20.00</div>
-      <div class="dpci-row"><span class="dpci">018-20-0192</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 93% Nylon, 7% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-short-sleeve-sheer-knit-polo-top-a-new-day-8482-white-xs/-/A-1012532888" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e34184f3-7303-4750-801f-3830efdb9e22?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Sheer Knit Polo Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_12f976a2-07d9-4841-9d36-d7950af3eb44?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
     <div class="meta">
@@ -702,16 +744,6 @@
       <div class="material">Jersey, 77% Recycled Polyester, 20% Viscose, 3% Spandex</div>
     </div>
   </div>
-  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
-    <span class="newribbon">NEW</span>
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-shaped-t-shirt-a-new-day-8482-white-m/-/A-95247302" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bfa34f6d-bdfc-456c-ac59-ad44915ccd1c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Shaped T-Shirt - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_71118a2a-4bb2-4252-b049-a797abf70a69?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-shaped-t-shirt-a-new-day-8482-white-m/-/A-95247302" target="_blank" rel="noopener">Women&#39;s Shaped T-Shirt - A New Day™</a>
-      <div class="price">$15.00</div>
-      <div class="dpci-row"><span class="dpci">018-20-0196</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 56% Cotton, 37% Modal, 7% Spandex</div>
-    </div>
-  </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
     <span class="newribbon">NEW</span>
     <a class="imgwrap" href="https://www.target.com/p/women-39-s-tank-top-a-new-day-8482-black-m/-/A-1011086073" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_32f8417a-3f87-4370-88c5-365a32ae3d29?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Textured V-Neck Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7a870186-7a3a-4a1f-abca-027ccd4252eb?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
@@ -720,30 +752,6 @@
       <div class="price">$25.00</div>
       <div class="dpci-row"><span class="dpci">018-02-7056</span><span class="badge own">018</span></div>
       <div class="material">Woven, 100% Recycled Polyester</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-tank-top-a-new-day-8482-black-l/-/A-95250759" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9c82668c-7f9a-492c-bdbc-d72913dd854a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Jersey Cowl Neck Short Sleeve Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_cc7b2ee5-0d2f-4c56-a55c-5c8094b6a30b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-modern-jersey-one-shoulder-ruched-tank-top-a-new-day-8482-black-l/-/A-95250759" target="_blank" rel="noopener">Women&#39;s Modern Jersey Cowl Neck Short Sleeve Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-4072</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-ribbed-muscle-pullover-tank-top-a-new-day-8482-green-xs/-/A-1011093867" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_aa77b162-de41-40ac-b01d-9bee2a9d3a36?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ribbed Muscle Pullover Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_bd97cc2a-a815-46c0-a897-db19f10a3559?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-ribbed-muscle-pullover-tank-top-a-new-day-8482-green-xs/-/A-1011093867" target="_blank" rel="noopener">Women&#39;s Ribbed Muscle Pullover Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-00-7075</span><span class="badge own">018</span></div>
-      <div class="material">2 x 2 Rib, 48% Cotton, 47% Rayon, 5% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-hardware-tank-top-a-new-day-8482-maroon-m/-/A-1011090243" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_baef110d-5f15-48e3-974d-dd7232c63587?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Hardware Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5c64fb42-32bd-4926-bc11-eec975a79ac9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-hardware-tank-top-a-new-day-8482-maroon-m/-/A-1011090243" target="_blank" rel="noopener">Women&#39;s Hardware Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-3639</span><span class="badge own">018</span></div>
-      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
@@ -762,14 +770,6 @@
       <div class="price">$25.00</div>
       <div class="dpci-row"><span class="dpci">018-14-4276</span><span class="badge own">018</span></div>
       <div class="material">Jersey, 72% Recycled Polyester, 25% Cotton, 3% Spandex</div>
-    </div>
-  </div>
-  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
-    <a class="imgwrap" href="https://www.target.com/p/women-39-s-rolled-modern-ribbed-tank-top-a-new-day-8482-black-m/-/A-95247215" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e76ac29d-e270-429c-b4cb-3eb6cd5af29b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Rolled Modern Ribbed Tank Top - A New Day™" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5b8791e9-3bdc-4db0-b436-42a181a60a2e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
-    <div class="meta">
-      <a class="pname" href="https://www.target.com/p/women-39-s-rolled-modern-ribbed-tank-top-a-new-day-8482-black-m/-/A-95247215" target="_blank" rel="noopener">Women&#39;s Rolled Modern Ribbed Tank Top - A New Day™</a>
-      <div class="dpci-row"><span class="dpci">018-01-4936</span><span class="badge own">018</span></div>
-      <div class="material">2 x 2 Rib, 48% Cotton, 47% Viscose, 5% Spandex</div>
     </div>
   </div>
   <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
@@ -922,17 +922,17 @@
   <span class="cnt">46 styles</span>
   <span class="desc">Pants, Denim, Skirts</span>
 </div>
-<div class="subfilter">
+<div class="subfilter" id="subfilter-bottoms">
   <div class="grp">
-    <button class="active" onclick="setDept('bottoms','all',this)">전체</button>
-    <button onclick="setDept('bottoms','018',this)">018 (27)</button>
-    <button onclick="setDept('bottoms','349',this)">349 (15)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setDept('bottoms','all',this)">전체</button>
+    <button data-val="018" data-label="018" onclick="setDept('bottoms','018',this)">018 (27)</button>
+    <button data-val="349" data-label="349" onclick="setDept('bottoms','349',this)">349 (15)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('bottoms','all',this)">전체</button>
-    <button onclick="setCat('bottoms','PANTS',this)">PANTS (12)</button>
-    <button onclick="setCat('bottoms','SKIRTS',this)">SKIRTS (11)</button>
-    <button onclick="setCat('bottoms','SHORTS',this)">SHORTS (4)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setCat('bottoms','all',this)">전체</button>
+    <button data-val="PANTS" data-label="PANTS" onclick="setCat('bottoms','PANTS',this)">PANTS (12)</button>
+    <button data-val="SKIRTS" data-label="SKIRTS" onclick="setCat('bottoms','SKIRTS',this)">SKIRTS (11)</button>
+    <button data-val="SHORTS" data-label="SHORTS" onclick="setCat('bottoms','SHORTS',this)">SHORTS (4)</button>
   </div>
 </div>
 <div class="grid">
@@ -1342,16 +1342,16 @@
   <span class="cnt">29 styles</span>
   <span class="desc">Dresses</span>
 </div>
-<div class="subfilter">
+<div class="subfilter" id="subfilter-dress">
   <div class="grp">
-    <button class="active" onclick="setDept('dress','all',this)">전체</button>
-    <button onclick="setDept('dress','018',this)">018 (20)</button>
-    <button onclick="setDept('dress','349',this)">349 (9)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setDept('dress','all',this)">전체</button>
+    <button data-val="018" data-label="018" onclick="setDept('dress','018',this)">018 (20)</button>
+    <button data-val="349" data-label="349" onclick="setDept('dress','349',this)">349 (9)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('dress','all',this)">전체</button>
-    <button onclick="setCat('dress','WOVEN',this)">WOVEN (19)</button>
-    <button onclick="setCat('dress','SWEATER',this)">SWEATER (1)</button>
+    <button class="active" data-val="all" data-label="전체" onclick="setCat('dress','all',this)">전체</button>
+    <button data-val="WOVEN" data-label="WOVEN" onclick="setCat('dress','WOVEN',this)">WOVEN (19)</button>
+    <button data-val="SWEATER" data-label="SWEATER" onclick="setCat('dress','SWEATER',this)">SWEATER (1)</button>
   </div>
 </div>
 <div class="grid">
@@ -1617,11 +1617,12 @@
 
 <script>
 var filterState = {
-  newOnly: false,
+  newOnly: true,
   tops: { dept:'all', cat:'all' },
   bottoms: { dept:'all', cat:'all' },
   dress: { dept:'all', cat:'all' }
 };
+applyFilters();
 
 function filterCards(mode){
   filterState.newOnly = (mode === 'new');
@@ -1672,6 +1673,42 @@ function applyFilters(){
     if (st.cat !== 'all' && c.getAttribute('data-cat') !== st.cat) ok = false;
     c.classList.toggle('is-hidden', !ok);
   });
+  ['tops','bottoms','dress'].forEach(updateCounts);
+}
+
+function countCards(section, deptVal, catVal){
+  var cards = document.querySelectorAll('.card[data-section="'+section+'"]');
+  var n = 0;
+  cards.forEach(function(c){
+    if (filterState.newOnly && c.getAttribute('data-new') !== '1') return;
+    if (deptVal !== 'all' && c.getAttribute('data-dept') !== deptVal) return;
+    if (catVal !== 'all' && c.getAttribute('data-cat') !== catVal) return;
+    n++;
+  });
+  return n;
+}
+
+function updateCounts(section){
+  var sf = document.getElementById('subfilter-'+section);
+  if (!sf) return;
+  var grps = sf.querySelectorAll('.grp');
+  var st = filterState[section];
+  if (grps[0]) {
+    grps[0].querySelectorAll('button').forEach(function(b){
+      var v = b.getAttribute('data-val');
+      var label = b.getAttribute('data-label');
+      if (v === 'all') { b.textContent = label; return; }
+      b.textContent = label + ' (' + countCards(section, v, st.cat) + ')';
+    });
+  }
+  if (grps[1]) {
+    grps[1].querySelectorAll('button').forEach(function(b){
+      var v = b.getAttribute('data-val');
+      var label = b.getAttribute('data-label');
+      if (v === 'all') { b.textContent = label; return; }
+      b.textContent = label + ' (' + countCards(section, st.dept, v) + ')';
+    });
+  }
 }
 </script>
 

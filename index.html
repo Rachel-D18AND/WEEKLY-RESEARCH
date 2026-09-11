@@ -158,12 +158,12 @@
 </div>
 <div class="subfilter">
   <div class="grp">
-    <button class="active" onclick="setDept('tops','all',this)">?꾩껜</button>
+    <button class="active" onclick="setDept('tops','all',this)">전체</button>
     <button onclick="setDept('tops','018',this)">018 (58)</button>
     <button onclick="setDept('tops','349',this)">349 (27)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('tops','all',this)">?꾩껜</button>
+    <button class="active" onclick="setCat('tops','all',this)">전체</button>
     <button onclick="setCat('tops','KNIT',this)">KNIT (23)</button>
     <button onclick="setCat('tops','WOVEN',this)">WOVEN (11)</button>
     <button onclick="setCat('tops','SWEATER',this)">SWEATER (18)</button>
@@ -924,12 +924,12 @@
 </div>
 <div class="subfilter">
   <div class="grp">
-    <button class="active" onclick="setDept('bottoms','all',this)">?꾩껜</button>
+    <button class="active" onclick="setDept('bottoms','all',this)">전체</button>
     <button onclick="setDept('bottoms','018',this)">018 (27)</button>
     <button onclick="setDept('bottoms','349',this)">349 (15)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('bottoms','all',this)">?꾩껜</button>
+    <button class="active" onclick="setCat('bottoms','all',this)">전체</button>
     <button onclick="setCat('bottoms','PANTS',this)">PANTS (12)</button>
     <button onclick="setCat('bottoms','SKIRTS',this)">SKIRTS (11)</button>
     <button onclick="setCat('bottoms','SHORTS',this)">SHORTS (4)</button>
@@ -1344,12 +1344,12 @@
 </div>
 <div class="subfilter">
   <div class="grp">
-    <button class="active" onclick="setDept('dress','all',this)">?꾩껜</button>
+    <button class="active" onclick="setDept('dress','all',this)">전체</button>
     <button onclick="setDept('dress','018',this)">018 (20)</button>
     <button onclick="setDept('dress','349',this)">349 (9)</button>
   </div>
   <div class="grp">
-    <button class="active" onclick="setCat('dress','all',this)">?꾩껜</button>
+    <button class="active" onclick="setCat('dress','all',this)">전체</button>
     <button onclick="setCat('dress','WOVEN',this)">WOVEN (19)</button>
     <button onclick="setCat('dress','SWEATER',this)">SWEATER (1)</button>
   </div>
@@ -1635,6 +1635,14 @@ function setDept(section, dept, btn){
   var bar = btn.closest('.grp');
   bar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
+  if (dept !== '018') {
+    filterState[section].cat = 'all';
+    var catBar = bar.parentElement.querySelectorAll('.grp')[1];
+    if (catBar) {
+      catBar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+      catBar.querySelector('button').classList.add('active');
+    }
+  }
   applyFilters();
 }
 
@@ -1643,6 +1651,14 @@ function setCat(section, cat, btn){
   var bar = btn.closest('.grp');
   bar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
+  if (cat !== 'all') {
+    filterState[section].dept = '018';
+    var deptBar = bar.parentElement.querySelectorAll('.grp')[0];
+    if (deptBar) {
+      deptBar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+      deptBar.querySelectorAll('button')[1].classList.add('active');
+    }
+  }
   applyFilters();
 }
 

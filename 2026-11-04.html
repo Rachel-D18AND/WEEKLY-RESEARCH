@@ -1,0 +1,1631 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D18 A New Day Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ef;
+    --surface:#ffffff;
+    --ink:#241f1d;
+    --ink-soft:#7a6f68;
+    --line:#e8ddd4;
+    --accent:#7d2e3b;
+    --accent-soft:#f3e1e2;
+    --tops:#a8563f;      --tops-tint:#faece4;
+    --bottoms:#5b6b45;   --bottoms-tint:#eef1e4;
+    --dress:#5d4a80;     --dress-tint:#efe9f6;
+    --ref-badge:#8a7f76; --ref-badge-tint:#efeae4;
+    --shadow: 0 1px 2px rgba(40,25,20,0.06), 0 6px 20px -8px rgba(40,25,20,0.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1b1714; --surface:#241f1c; --ink:#f1e9e2; --ink-soft:#b3a89f; --line:#3a322c;
+      --accent:#e08b98; --accent-soft:#3a2529;
+      --tops:#e0a58e; --tops-tint:#332420;
+      --bottoms:#a9bb90; --bottoms-tint:#26291f;
+      --dress:#b6a3dd; --dress-tint:#292239;
+      --ref-badge:#c2b7ac; --ref-badge-tint:#2c2620;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -10px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1b1714; --surface:#241f1c; --ink:#f1e9e2; --ink-soft:#b3a89f; --line:#3a322c;
+    --accent:#e08b98; --accent-soft:#3a2529;
+    --tops:#e0a58e; --tops-tint:#332420;
+    --bottoms:#a9bb90; --bottoms-tint:#26291f;
+    --dress:#b6a3dd; --dress-tint:#292239;
+    --ref-badge:#c2b7ac; --ref-badge-tint:#2c2620;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -10px rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Work Sans',-apple-system,'Malgun Gothic',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif; text-wrap:balance; margin:0;}
+  a{color:inherit;}
+  .topbar{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:20px; padding:14px 28px; background:var(--surface); border-bottom:1px solid var(--line); box-shadow:var(--shadow);}
+  .topbar .mark{font-family:'Fraunces',serif; font-weight:700; font-size:17px; display:flex; align-items:baseline; gap:6px;}
+  .topbar .mark small{font-family:'Work Sans',sans-serif; font-weight:500; font-size:11px; color:var(--ink-soft); letter-spacing:.04em;}
+  .topbar nav{display:flex; gap:4px; margin-left:auto; flex-wrap:wrap;}
+  .topbar nav a{font-size:13px; font-weight:600; padding:7px 14px; border-radius:100px; text-decoration:none; color:var(--ink-soft); transition:background .15s, color .15s;}
+  .topbar nav a:hover{background:var(--accent-soft); color:var(--accent);}
+  .topbar nav a:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  .hero{max-width:1200px; margin:0 auto; padding:44px 28px 8px;}
+  .hero .eyebrow{font-size:12px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+  .hero h1{font-size:34px; font-weight:600; line-height:1.15;}
+  .hero p.sub{color:var(--ink-soft); font-size:15px; margin-top:10px; max-width:64ch; line-height:1.6;}
+
+  .stats{max-width:1200px; margin:26px auto 0; padding:0 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .stat{background:var(--surface); padding:16px 18px;}
+  .stat .n{font-family:'Fraunces',serif; font-size:26px; font-weight:600; font-variant-numeric:tabular-nums;}
+  .stat .l{font-size:11.5px; color:var(--ink-soft); margin-top:2px; letter-spacing:.02em;}
+
+  .note{max-width:1200px; margin:22px auto 0; padding:12px 18px; background:var(--accent-soft); border-radius:10px; font-size:13px; color:var(--ink); margin-left:28px; margin-right:28px;}
+  .note b{color:var(--accent);}
+
+  main{max-width:1200px; margin:0 auto; padding:36px 28px 80px;}
+
+  .section-head{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; padding:14px 20px; border-radius:12px; margin:44px 0 20px;}
+  .section-head:first-child{margin-top:0;}
+  .section-head h2{font-size:22px; font-weight:600;}
+  .section-head .cnt{font-size:13px; font-weight:600; opacity:.8;}
+  .section-head .desc{font-size:12.5px; opacity:.75; width:100%;}
+  .sec-TOPS{background:var(--tops-tint); color:var(--tops);}
+  .sec-BOTTOMS{background:var(--bottoms-tint); color:var(--bottoms);}
+  .sec-DRESS{background:var(--dress-tint); color:var(--dress);}
+  .sec-TOPS h2, .sec-BOTTOMS h2, .sec-DRESS h2{color:var(--ink);}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:16px;}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;}
+  .card img{display:block; width:100%; height:auto; transition:opacity .15s ease;}
+  .card .imgwrap{position:relative; overflow:hidden; background:var(--bg);}
+  .card .imgwrap img.back{position:absolute; inset:0; opacity:0;}
+  .card .imgwrap:hover img.back{opacity:1;}
+  .card .imgwrap:hover img.front{opacity:0;}
+  .card .meta{padding:10px 12px 12px; display:flex; flex-direction:column; gap:5px;}
+  .card .pname{font-size:12.5px; font-weight:600; color:var(--ink); text-decoration:none; line-height:1.35;}
+  .card .pname:hover{color:var(--accent); text-decoration:underline;}
+  .card a img{cursor:pointer;}
+  .card .dpci-row{display:flex; align-items:center; justify-content:space-between; gap:6px;}
+  .card .dpci{font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:500; color:var(--ink);}
+  .badge{font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:600; padding:2px 7px; border-radius:100px; letter-spacing:.03em; white-space:nowrap;}
+  .badge.own{background:var(--accent-soft); color:var(--accent);}
+  .badge.ref{background:var(--ref-badge-tint); color:var(--ref-badge);}
+  .card{position:relative;}
+  .newribbon{position:absolute; top:8px; left:8px; z-index:2; background:#c0392b; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.04em; padding:3px 8px; border-radius:100px; box-shadow:0 1px 3px rgba(0,0,0,.25);}
+  .filterbar{display:flex; gap:8px; align-items:center; margin:14px 0 0; flex-wrap:wrap;}
+  .filterbar button{font-family:'Work Sans',sans-serif; font-size:12.5px; font-weight:600; padding:7px 14px; border-radius:100px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); cursor:pointer;}
+  .filterbar button.active{background:#c0392b; color:#fff; border-color:#c0392b;}
+  .card.is-hidden{display:none;}
+  .subfilter{display:flex; gap:6px; flex-wrap:wrap; align-items:center; padding:10px 20px 0;}
+  .subfilter .grp{display:flex; gap:4px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:100px; padding:3px;}
+  .subfilter button{font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; padding:5px 11px; border-radius:100px; border:none; background:transparent; color:var(--ink-soft); cursor:pointer;}
+  .subfilter button.active{background:var(--accent); color:#fff;}
+  .subfilter .sep{width:1px; height:16px; background:var(--line); margin:0 2px;}
+  .card .material{font-size:11px; color:var(--ink-soft); line-height:1.4;}
+  .card .price{font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums;}
+
+  .card .same{font-size:10.5px; line-height:1.35; color:var(--ink-soft); background:var(--bg); border:1px dashed var(--line); border-radius:6px; padding:3px 7px;}
+  .card[data-new="0"] .imgwrap, .card[data-new="0"] > a > img{opacity:.75;}
+  .card .price .sale{color:#c0392b;}
+  .card .price s{color:#222; font-size:12px; font-weight:400; margin-left:2px;}
+  footer{max-width:1200px; margin:0 auto; padding:20px 28px 60px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--line);}
+  @media (max-width:640px){
+    .topbar{padding:12px 16px;}
+    .hero{padding:32px 16px 4px;}
+    .hero h1{font-size:26px;}
+    main{padding:28px 16px 60px;}
+    .stats,.note{margin-left:16px;margin-right:16px;padding-left:16px;padding-right:16px;}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="mark">D18 <small>&middot; A NEW DAY RESEARCH</small></div>
+  <nav>
+    <a href="#tops">Tops</a>
+    <a href="#bottoms">Bottoms</a>
+    <a href="#dress">Dress</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Target Dept 018 &middot; Women's RTW</div>
+  <h1>A New Day 리서치 대시보드</h1>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">112</div><div class="l">🆕 NEW (Floor Pad 대조 완료) &middot; T59·B31·D22</div></div>
+  <div class="stat"><div class="n">41</div><div class="l">신규 018 &middot; Top 29 · Bottom 9 · Dress 3</div></div>
+  <div class="stat"><div class="n">71</div><div class="l">신규 D349 (reference) &middot; Top 30 · Bottom 22 · Dress 19</div></div>
+</div>
+
+<div class="filterbar" style="margin-left:28px;">
+  <button id="filterNew" class="active" onclick="filterCards('new')">🆕 신규 스타일만 (112)</button>
+  <button id="filterAll" onclick="filterCards('all')">전체 의류 보기 (131)</button>
+</div>
+
+<div class="note"><b>Snapshot 2026-11-04</b> &middot; T.com A New Day 신상 페이지 의류 143개 중, 이전 스냅샷(9/11, 9/30, 10/14)에 없던 <b>신규 스타일 112개</b>를 정리했습니다. 상품명/소재가 같고 DPCI(컬러)만 다른 19개는 '전체 의류 보기'에서 "SAME STYLE"로 표시돼요. 이전 스냅샷: <a href='2026-10-14.html'>2026-10-14</a> &middot; <a href='2026-09-30.html'>2026-09-30</a> &middot; <a href='2026-09-11.html'>2026-09-11</a></div>
+
+<main id="content">
+<div class="section-head sec-TOPS" id="tops">
+  <h2>Tops</h2>
+  <span class="cnt">59 new / 69 styles</span>
+  <span class="desc">Tops, Tees, Knits, Shirts, Sweaters, Jackets</span>
+</div>
+<div class="subfilter" id="subfilter-tops">
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setDept('tops','all',this)">ALL</button>
+    <button data-val="018" data-label="018" onclick="setDept('tops','018',this)">018 (37)</button>
+    <button data-val="349" data-label="349" onclick="setDept('tops','349',this)">349 (32)</button>
+  </div>
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setCat('tops','all',this)">ALL</button>
+    <button data-val="KNIT" data-label="KNIT" onclick="setCat('tops','KNIT',this)">KNIT (16)</button>
+    <button data-val="WOVEN" data-label="WOVEN" onclick="setCat('tops','WOVEN',this)">WOVEN (3)</button>
+    <button data-val="SWEATER" data-label="SWEATER" onclick="setCat('tops','SWEATER',this)">SWEATER (12)</button>
+    <button data-val="JACKET" data-label="JACKET" onclick="setCat('tops','JACKET',this)">JACKET (6)</button>
+  </div>
+</div>
+<div class="grid">
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011118408" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7c3cbc09-e013-4779-8931-5371bad764cd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Lace Trim T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9d03752e-1407-4d74-b672-ff1c727a261b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011118408" target="_blank" rel="noopener">Women&#39;s Short Sleeve Lace Trim T-Shirt</a>
+      <div class="price">$12.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-4062</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 58% Cotton, 39% Modal, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010661091" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a3d6fe68-d55c-4535-8858-5fa13daa1d01?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cowl Neck Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_56277d53-4fc9-44c4-85ec-c1bb19d3dd48?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010661091" target="_blank" rel="noopener">Women&#39;s Cowl Neck Tank Top</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-4291</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Modal, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010954903" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9f56b365-4279-4edd-886d-71ecdea3a1a8?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Sheer Mockneck T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8c7b0376-79f7-454a-ac7c-645ba6e91885?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010954903" target="_blank" rel="noopener">Women&#39;s Long Sleeve Sheer Mockneck T-Shirt</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-4570</span><span class="badge own">018</span></div>
+      <div class="material">Velour, 10% Recycled Polyester, 69% Nylon, 21% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012182906" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_299f1540-e047-4212-9c7b-93fba83c9b8f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Roll Mockneck Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a1532348-a449-46ba-a191-382dfe5a1d3e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012182906" target="_blank" rel="noopener">Women&#39;s Long Sleeve Roll Mockneck Top</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-4893</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 92% Viscose, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1011427785" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_775b81bf-18b1-485b-b2bf-8741b6af02d3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Modern Jersey Cowl Back Scoop Neck Top" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011427785" target="_blank" rel="noopener">Women&#39;s Long Sleeve Modern Jersey Cowl Back Scoop Neck Top</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-6902</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Rayon, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011118208" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_23eb4e14-0680-4fe6-a55a-7b93b212f8ea?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Lace Trim Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_da2b4887-d8c6-41ff-85a2-267eeb9d61dd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011118208" target="_blank" rel="noopener">Women&#39;s Long Sleeve Lace Trim Top</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-7619</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 58% Cotton, 39% Modal, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012182973" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_1a1baea9-769d-4ebc-a443-9d557c7e6981?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Draped Mesh Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_01bd8dbe-f8b5-404d-ad01-f91934fa5540?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012182973" target="_blank" rel="noopener">Women&#39;s Draped Mesh Tank Top</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-7710</span><span class="badge own">018</span></div>
+      <div class="material">Power Mesh, 97% Recycled Polyester, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011118599" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_180c9230-bbcd-48ed-9ef5-cbc010b9f2ea?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruched Mesh Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b1c31133-93d7-4948-a7fb-e533dcfd34ac?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011118599" target="_blank" rel="noopener">Women&#39;s Ruched Mesh Tank Top</a>
+      <div class="price">$12.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-7834</span><span class="badge own">018</span></div>
+      <div class="material">Mesh, 95% Recycled Polyester, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1012182912" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_02690f64-ef91-4912-b5d3-c90a4f459814?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Smocked Tank Top" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012182912" target="_blank" rel="noopener">Women&#39;s Smocked Tank Top</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-9429</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 57% Cotton, 38% Recycled Polyester, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010660978" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_79cba543-f2dc-4643-bcfc-89badc085e9d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Off the Shoulder Long Sleeve Knit Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8c2836d9-da24-4b1d-b955-b27409787a72?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010660978" target="_blank" rel="noopener">Women&#39;s Off the Shoulder Long Sleeve Knit Top</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-0471</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011115893" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7a0c4194-920d-41c0-ae95-a6fe723cf5eb?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Scoop Neck Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_4f040682-b6b0-490b-bf17-8f016bc3061c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011115893" target="_blank" rel="noopener">Women&#39;s Long Sleeve Scoop Neck Shirt</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-0606</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011545933" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_666adf86-f4b2-46d5-b1bd-a9ce89d9b60a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Featherweight T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c38aac77-062f-4b39-9f2d-6b0c34e1c0c5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011545933" target="_blank" rel="noopener">Women&#39;s Long Sleeve Featherweight T-Shirt</a>
+      <div class="price">$15.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-0797</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 65% Recycled Polyester, 35% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-95296465" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_ba763d1a-32c9-4c03-84be-87ff702afbae?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Collared PinStriped Button-Down Shirts" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95296465" target="_blank" rel="noopener">Women&#39;s Long Sleeve Collared PinStriped Button-Down Shirts</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-02-6970</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 63% Recycled Polyester, 33% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="WOVEN">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010492896" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_4d619a16-702a-4c11-8e12-ac25750966aa?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Shell Satin Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_4da5f597-a91c-477b-b9dd-162a6eb63976?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010492896" target="_blank" rel="noopener">Women&#39;s Shell Satin Tank Top</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">018-02-6999</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011125980" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_fe60d838-2dc1-4f25-815b-7b0a7e46e6ed?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Crewneck Cardigan Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b2c6ee66-a7aa-46ce-b3dd-fff3803585f9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011125980" target="_blank" rel="noopener">Women&#39;s Crewneck Cardigan Sweater</a>
+      <div class="price"><span class='sale'>$18.00</span> <s>$30.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-1144</span><span class="badge own">018</span></div>
+      <div class="material">Jacquard Knit, 70% Recycled Polyester, 18% Acrylic, 12% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011261803" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_3387a5cf-e11c-4bbf-968c-7afaa5868af1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Knit Polo Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b0bb0cd8-f914-46aa-b348-bf91fd5abc23?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011261803" target="_blank" rel="noopener">Women&#39;s Knit Polo Pullover Sweater</a>
+      <div class="price"><span class='sale'>$18.00</span> <s>$30.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-3974</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1011261784" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_56b3d033-017b-46e0-a0ae-5494f1eecce5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Crewneck Pullover Sweater" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011261784" target="_blank" rel="noopener">Women&#39;s Crewneck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$15.00</span> <s>$25.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-4772</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010700233" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f7a803fb-55a4-4e2e-9408-cfb8f6b04263?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Crewneck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_dacd490c-aead-4a94-9891-e76988a03d67?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010700233" target="_blank" rel="noopener">Women&#39;s Short Sleeve Crewneck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$15.00</span> <s>$25.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-8833</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-95299234" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0c35df45-61c3-4bc1-ae65-1caa6961a33d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cashmere Crewneck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_69e82167-781d-44c0-99a6-e96e3b914489?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95299234" target="_blank" rel="noopener">Women&#39;s Cashmere Crewneck Pullover Sweater</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">018-14-4349</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 100% Cashmere</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010570683" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_7b71c1d2-2f58-4ecb-8c50-02e76dc1349b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cashmere Long Sleeve Crewneck Cardigan Sweater" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010570683" target="_blank" rel="noopener">Women&#39;s Cashmere Long Sleeve Crewneck Cardigan Sweater</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">018-14-4373</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 100% Cashmere</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010680094" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_24422fd9-2fe6-4fd8-9e1b-c17ca5a30ade?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Crewneck Cardigan" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010680094" target="_blank" rel="noopener">Women&#39;s Long Sleeve Crewneck Cardigan</a>
+      <div class="price"><span class='sale'>$19.20</span> <s>$32.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-4744</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010680155" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_acd20723-9b81-41ff-ac0d-a7dc757dbbf4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Wrap Cardigan" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_06fe7b9f-b1d9-421e-ad92-cbf023c4e5ad?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010680155" target="_blank" rel="noopener">Women&#39;s Long Sleeve Wrap Cardigan</a>
+      <div class="price"><span class='sale'>$22.80</span> <s>$38.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-4805</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 75% Recycled Polyester, 18% Nylon, 6% Wool, 1% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010680184" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_beda5d58-5047-43c8-81df-97dedd03e7ad?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Shell Crewneck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7d3cfbec-ab82-401f-9586-a5228153496e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010680184" target="_blank" rel="noopener">Women&#39;s Shell Crewneck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$15.00</span> <s>$25.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-4834</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010700228" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_fd1bbb83-066d-43ca-9c41-c196b8234a90?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s V-Neck Pullover Sweater" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010700228" target="_blank" rel="noopener">Women&#39;s V-Neck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$18.00</span> <s>$30.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-4900</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010700277" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7f035629-94e8-412d-b772-f5e6216045f7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Turtleneck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_89cc996e-495c-4e20-8db9-abfaebcce7fd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010700277" target="_blank" rel="noopener">Women&#39;s Turtleneck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$18.00</span> <s>$30.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-4904</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="JACKET">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010392356" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_46ed7653-f00e-45e9-845c-e951617314f0?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Faux Wool Leopard Swing Coat" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5c8e6f32-947d-400a-a87f-19c4fa64a259?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010392356" target="_blank" rel="noopener">Women&#39;s Short Faux Wool Leopard Swing Coat</a>
+      <div class="price">$50.00</div>
+      <div class="dpci-row"><span class="dpci">018-06-1600</span><span class="badge own">018</span></div>
+      <div class="material">Jacquard Weave, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="JACKET">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010991794" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_2d8707bb-7a3c-4390-adcb-8c8450556fee?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Faux Fur Collar Front-Tie Puffer Jacket" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010991794" target="_blank" rel="noopener">Women&#39;s Long Sleeve Faux Fur Collar Front-Tie Puffer Jacket</a>
+      <div class="price">$60.00</div>
+      <div class="dpci-row"><span class="dpci">018-12-1049</span><span class="badge own">018</span></div>
+      <div class="material">Dobby, 100% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="JACKET">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010991921" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_cfa20456-e866-439e-897c-6e70e2d489c1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Fur Jacket" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010991921" target="_blank" rel="noopener">Women&#39;s Faux Fur Jacket</a>
+      <div class="price">$58.00</div>
+      <div class="dpci-row"><span class="dpci">018-12-1057</span><span class="badge own">018</span></div>
+      <div class="material">Faux Fur, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="018" data-cat="JACKET">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010992073" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f6c7c777-6e62-407e-908e-d2171b14d006?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Long Faux Fur Button-Up Coat" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_2fa35e08-382f-4d5b-b1d0-49789625b0d9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010992073" target="_blank" rel="noopener">Women&#39;s Long Sleeve Long Faux Fur Button-Up Coat</a>
+      <div class="price">$65.00</div>
+      <div class="dpci-row"><span class="dpci">018-12-1092</span><span class="badge own">018</span></div>
+      <div class="material">Faux Fur, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581348" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_426168f0-a8d2-4e0f-b3b7-160906a79d94?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Lace Mock Turtleneck Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_384ea6af-7ae9-4ee3-8072-7a4c1329db31?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581348" target="_blank" rel="noopener">Women&#39;s Long Sleeve Lace Mock Turtleneck Top</a>
+      <div class="price">$26.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4942</span><span class="badge ref">D349</span></div>
+      <div class="material">Lace, 97% Recycled Nylon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1013581360" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_4a9e2305-61bb-4c8f-9304-2c1ef7ddfc48?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruffle Sleeve Lace Trim V-Neck Camisole" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581360" target="_blank" rel="noopener">Women&#39;s Ruffle Sleeve Lace Trim V-Neck Camisole</a>
+      <div class="price">$28.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4948</span><span class="badge ref">D349</span></div>
+      <div class="material">Satin, 50% Viscose, 50% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013636214" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_4982071d-1bc1-45f1-8455-62aba8af1f49?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Dual Long Sleeve Jersey T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e2c5845b-863b-4089-ba9f-14bdc0fe0bee?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013636214" target="_blank" rel="noopener">Women&#39;s Dual Long Sleeve Jersey T-Shirt</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4989</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 100% Cotton</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014236490" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f5199cb5-6ddf-47b7-a08a-5eba2be9102c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Bell Long Sleeve Tie-Back V-Neck Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_99c01ec9-547e-4310-b42f-a81f54dae6fd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014236490" target="_blank" rel="noopener">Women&#39;s Bell Long Sleeve Tie-Back V-Neck Top</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4994</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 67% Rayon, 29% Acrylic, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014236514" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_cd7d666a-6be3-44fc-8a28-192a39c0e974?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Bell Long Sleeve Keyhole Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8e85c78d-b3ba-4c7b-837c-242134cd3677?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014236514" target="_blank" rel="noopener">Women&#39;s Bell Long Sleeve Keyhole Top</a>
+      <div class="price">$22.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5109</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 46% Cotton, 46% Modal, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014236522" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_80132fd4-8563-4994-aabd-f87fad1d4041?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cap Sleeve Crossover Pleated Draped Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c14c4807-79ac-473f-abea-f7edd2d9bbfa?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014236522" target="_blank" rel="noopener">Women&#39;s Cap Sleeve Crossover Pleated Draped Top</a>
+      <div class="price">$18.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5123</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 95% Cotton, 5% Recycled Cotton</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014338835" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_96a8e82c-575e-4b52-ac6c-9db42ddd3bb2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Contrast Trim Johnny Collar Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_31460275-b925-4d4d-9c42-98b12d9a8499?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014338835" target="_blank" rel="noopener">Women&#39;s Short Sleeve Contrast Trim Johnny Collar Pullover Sweater</a>
+      <div class="price"><span class='sale'>$20.40</span> <s>$34.00</s></div>
+      <div class="dpci-row"><span class="dpci">349-00-5165</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 80% Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014338868" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_b1b843c8-7b3b-4a28-8d8b-8fdf4dfad439?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Textured Mock Neck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_2dc0400d-1fa0-4314-b8a5-8a600ac6144f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014338868" target="_blank" rel="noopener">Women&#39;s Long Sleeve Textured Mock Neck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$21.00</span> <s>$35.00</s></div>
+      <div class="dpci-row"><span class="dpci">349-00-5198</span><span class="badge ref">D349</span></div>
+      <div class="material">Sweater Knit, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014338871" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_1e375cbc-0dd8-4e8e-92dd-1b9badc4692c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve V-Neck Cardigan Sweater" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014338871" target="_blank" rel="noopener">Women&#39;s Long Sleeve V-Neck Cardigan Sweater</a>
+      <div class="price"><span class='sale'>$22.80</span> <s>$38.00</s></div>
+      <div class="dpci-row"><span class="dpci">349-00-5204</span><span class="badge ref">D349</span></div>
+      <div class="material">Sweater Knit, 100% Cotton</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014338898" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_07748cb0-9c63-43bd-965b-860cbd4a70e0?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Ribbed Cuff Crewneck Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9f24322c-8495-4b34-9ea9-aa1c7f992b02?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014338898" target="_blank" rel="noopener">Women&#39;s Long Sleeve Ribbed Cuff Crewneck Pullover Sweater</a>
+      <div class="price"><span class='sale'>$21.00</span> <s>$35.00</s></div>
+      <div class="dpci-row"><span class="dpci">349-00-5231</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 80% Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014338903" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_01da899b-fd2d-4383-9c2b-d836c353c052?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Crewneck Cardigan Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e78951ee-1da1-48f0-bb2c-28854bc53ddf?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014338903" target="_blank" rel="noopener">Women&#39;s Short Sleeve Crewneck Cardigan Sweater</a>
+      <div class="price"><span class='sale'>$21.00</span> <s>$35.00</s></div>
+      <div class="dpci-row"><span class="dpci">349-00-5238</span><span class="badge ref">D349</span></div>
+      <div class="material">Sweater Knit, 80% Recycled Polyester, 20% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364723" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9f2146ee-d40f-4eb8-ab65-d86da1e3b330?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s V-Neck Peplum Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_34fb6c06-5ac2-49a6-a1f1-c52e874ee524?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364723" target="_blank" rel="noopener">Women&#39;s V-Neck Peplum Top</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5269</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 56% Recycled Polyester, 30% Rayon, 9% Linen, 5% Cotton</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364739" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d0a43c0a-ae0b-4ea9-a74d-be8d722a7d3a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Front Pocket Relaxed Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c23a682b-243d-474b-91bc-71817b5104d7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364739" target="_blank" rel="noopener">Women&#39;s Short Sleeve Front Pocket Relaxed Top</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5273</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 93% Recycled Polyester, 7% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014364809" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_97c69631-74ed-4887-9fff-a7aaf3b37ba1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruffle Hem Boat Neck Top" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364809" target="_blank" rel="noopener">Women&#39;s Ruffle Hem Boat Neck Top</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5283</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 83% Rayon, 17% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364817" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_63bc9776-04c1-4b6b-910c-b172c5028143?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Balloon Long Sleeve Chiffon Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_2ccf072d-eff3-4c13-ae41-a57988cf6202?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364817" target="_blank" rel="noopener">Women&#39;s Balloon Long Sleeve Chiffon Top</a>
+      <div class="price">$32.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5291</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, Chiffon, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014364822" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_495ab006-1cf9-482e-ba97-4f37cae2d0fa?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Balloon Long Sleeve Button-Down Shirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364822" target="_blank" rel="noopener">Women&#39;s Balloon Long Sleeve Button-Down Shirt</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5296</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 61% Recycled Polyester, 39% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390606" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f06f7c3c-3503-4ec4-9513-35e721363e1e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Relaxed Fit Curved Bottom Collared Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e6063b77-f2bf-478f-bba4-090860828498?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390606" target="_blank" rel="noopener">Women&#39;s Long Sleeve Relaxed Fit Curved Bottom Collared Shirt</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5323</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 82% Recycled Polyester, 15% Rayon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390627" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_752a8148-16d4-42c0-b963-130b8cb73850?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Puff Long Sleeve Twisted High Neck Gathered Satin Blouse" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7e5b05b8-81d3-4797-9067-0ab338bc542e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390627" target="_blank" rel="noopener">Women&#39;s Puff Long Sleeve Twisted High Neck Gathered Satin Blouse</a>
+      <div class="price">$34.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5332</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638240" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d201d90c-9bec-4152-80b8-1bb853bd3af9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s 3/4 Sleeve Ribbed Boat Neck Lace Cuff Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_d730234e-a87a-4432-9a57-be0474dcf377?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638240" target="_blank" rel="noopener">Women&#39;s 3/4 Sleeve Ribbed Boat Neck Lace Cuff Top</a>
+      <div class="price">$22.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-5449</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 96% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638438" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_89de9c08-3ff2-47b6-87b6-4a456b0b124a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Draped Asymmetrical Neck Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_2be01605-d4d5-4945-8abd-8ec7105344a9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638438" target="_blank" rel="noopener">Women&#39;s Long Sleeve Draped Asymmetrical Neck Top</a>
+      <div class="price">$20.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-6589</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 64% Recycled Polyester, 28% Rayon, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638242" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_b8dceea2-5828-4281-b38b-dc832f6f2988?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Lace Trim V-Neck Asymmetrical Hem Cami" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7fcef10d-b709-4dce-bc83-1f3af735c2fa?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638242" target="_blank" rel="noopener">Women&#39;s Lace Trim V-Neck Asymmetrical Hem Cami</a>
+      <div class="price">$20.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-7165</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638282" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_5209ae19-6dac-43e0-b891-fbc5edeb460f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruched One Shoulder Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_26d507ca-bd60-457e-b51e-2c0e104d2a56?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638282" target="_blank" rel="noopener">Women&#39;s Ruched One Shoulder Top</a>
+      <div class="price">$20.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-7485</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 92% Recycled Polyester, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638288" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_1c8eb9d5-60cd-4874-8185-6ad2ee481400?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Side-Tie Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b2e06f49-d303-4582-92a0-36a61a27bbda?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638288" target="_blank" rel="noopener">Women&#39;s Long Sleeve Side-Tie Top</a>
+      <div class="price">$22.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-8065</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 92% Recycled Polyester, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638274" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_54af58dd-bfdb-484b-9929-c3844f6da8fb?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s 3/4 Sleeve Collared Button-Front Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_6aa6016b-7991-4ce5-bec2-e386a7b6c0a4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638274" target="_blank" rel="noopener">Women&#39;s 3/4 Sleeve Collared Button-Front Top</a>
+      <div class="price">$33.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-8217</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 85% Recycled Polyester, 15% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581145" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_25b1b929-9d2a-4621-8e68-c9063b2f8e73?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Suede Funnel Neck Bomber Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b66e6616-7603-44e2-b390-dd6e1122740e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581145" target="_blank" rel="noopener">Women&#39;s Faux Suede Funnel Neck Bomber Jacket</a>
+      <div class="price">$55.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-0197</span><span class="badge ref">D349</span></div>
+      <div class="material">Faux Suede, 94% Recycled Polyester, 6% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364745" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_17a7eb39-f83d-4149-a506-7da2f53d9137?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Subtle Shine Frog Closure Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_dcdcdfd3-7eb0-4846-8fa9-f20011963454?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364745" target="_blank" rel="noopener">Women&#39;s Subtle Shine Frog Closure Jacket</a>
+      <div class="price">$42.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-0214</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364781" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_269e3617-6d30-4f76-b6ed-1a2b7603d4dd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Funnel Neck Relaxed Zip-Up Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_da942e5b-acd9-4eba-aa0e-860128b55190?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364781" target="_blank" rel="noopener">Women&#39;s Funnel Neck Relaxed Zip-Up Jacket</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-0226</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390581" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d5dec29b-37d8-4535-9c31-7f269c0b53e1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Asymmetrical Stand Collar Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_313279dc-8436-4c9b-a46f-67a49c3d7d16?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390581" target="_blank" rel="noopener">Women&#39;s Asymmetrical Stand Collar Jacket</a>
+      <div class="price">$58.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-0242</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390628" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_2c3b9efb-ceeb-4cc1-aa44-43d243fe7ba2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Leather Point Collar Cropped Elastic Hem Zip-Up Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7747eb7b-00c6-40a2-a5f3-f5d998bec853?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390628" target="_blank" rel="noopener">Women&#39;s Faux Leather Point Collar Cropped Elastic Hem Zip-Up Jacket</a>
+      <div class="price">$55.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-0247</span><span class="badge ref">D349</span></div>
+      <div class="material">Faux Leather, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="tops" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638340" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_4a08c3b6-b7a3-401a-bd49-5c8a5b281073?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Belted Double Breasted Trench Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_be817786-b463-4694-a83c-83e9d88bc725?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638340" target="_blank" rel="noopener">Women&#39;s Belted Double Breasted Trench Jacket</a>
+      <div class="price">$50.00</div>
+      <div class="dpci-row"><span class="dpci">349-03-4276</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 77% Rayon, 20% Nylon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011057511" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_cb6b44ac-a8e2-4701-b5e2-95712a38789a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Modern Ribbed T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_02c20f09-29bf-4068-9b58-dc2ea7298b69?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011057511" target="_blank" rel="noopener">Women&#39;s Short Sleeve Modern Ribbed T-Shirt</a>
+      <div class="price">$8.00</div>
+      <div class="dpci-row"><span class="dpci">018-00-4728</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 48% Cotton, 47% Rayon, 5% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-00-8048, 018-00-9013, 018-00-4867</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010955028" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_7f29edaf-fd5e-4086-b975-fb783ffea12b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_0c274836-51ad-4404-9b7b-d742d1232a78?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010955028" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Top</a>
+      <div class="price">$12.00</div>
+      <div class="dpci-row"><span class="dpci">018-00-8886</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-00-4224</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011573346" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_ec34e359-a18c-45d1-b388-29381c4d84a6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Front Twist Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_da42d8ae-ece5-4f6a-9a3e-9966aa7bb90e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011573346" target="_blank" rel="noopener">Women&#39;s Front Twist Tank Top</a>
+      <div class="price">$12.00</div>
+      <div class="dpci-row"><span class="dpci">018-01-7505</span><span class="badge own">018</span></div>
+      <div class="material">Knit, 100% Cotton</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-01-5411, 018-01-5593</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012183197" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_c04d673e-4c49-4c25-b3e6-79c832333afc?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Refined Ribbed Knit Tank Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_bd78c088-df6c-467a-872c-6de703c40ba5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012183197" target="_blank" rel="noopener">Women&#39;s Refined Ribbed Knit Tank Top</a>
+      <div class="price">$10.00</div>
+      <div class="dpci-row"><span class="dpci">018-20-1200</span><span class="badge own">018</span></div>
+      <div class="material">1 x 1 Rib, 96% Cotton, 4% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-20-0256</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="WOVEN">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-95235254" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_08def062-7a9e-43db-8f18-dd5f8534b3b3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve V-Neck Scarf Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e68af565-df67-4c77-a3a4-474cbc873f2d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95235254" target="_blank" rel="noopener">Women&#39;s Long Sleeve V-Neck Scarf Top</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-02-6741</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Polyester</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-02-6610, 018-02-6744</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="SWEATER">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-95143647" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_08f8f23d-cce2-4332-a743-9d4d5a6749c2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Oversized Pullover Sweater" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_9b687d89-30d8-4aa6-9f05-aa065f082f62?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95143647" target="_blank" rel="noopener">Women&#39;s Oversized Pullover Sweater</a>
+      <div class="price"><span class='sale'>$18.00</span> <s>$30.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-14-3751</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 88% Recycled Polyester, 6% Nylon, 6% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-14-4089</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="JACKET">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012280630" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_43ab86f8-585e-4be7-8e61-c1fc72e05599?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Zip-Up Bubble Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e3083b6c-cd08-4567-97c9-81298b14f594?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012280630" target="_blank" rel="noopener">Women&#39;s Long Sleeve Zip-Up Bubble Jacket</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">018-06-1764</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 51% Cotton, 5% Recycled Cotton, 34% Recycled Polyester, 10% Nylon</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-06-1741, 018-06-1748</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="018" data-cat="JACKET">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010659775" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_3b289df0-e0d6-40b3-a665-bc445caf77c9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Leather Jacket" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c0c32b2c-662e-402d-b2e4-2bff5f9052e4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010659775" target="_blank" rel="noopener">Women&#39;s Faux Leather Jacket</a>
+      <div class="price">$60.00</div>
+      <div class="dpci-row"><span class="dpci">018-12-1025</span><span class="badge own">018</span></div>
+      <div class="material">Faux Leather, 100% Recycled Polyester</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-12-1026</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013526459" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_8b426b2e-b73a-4556-ab36-33bbf7915a3d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Twist-Front Top" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ff284574-f08c-4d86-b7e6-638640a43b0c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013526459" target="_blank" rel="noopener">Women&#39;s Long Sleeve Twist-Front Top</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4921</span><span class="badge ref">D349</span></div>
+      <div class="material">Knit, 66% Cotton, 30% Recycled Cotton, 4% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 349-00-4917</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="tops" data-dept="349" data-cat="">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013636085" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_beccdc4a-8523-429f-81c7-9344e701bfdd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Sweater Knit T-Shirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_caca9eca-b6a3-475e-9b15-44372be2d097?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013636085" target="_blank" rel="noopener">Women&#39;s Short Sleeve Sweater Knit T-Shirt</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">349-00-4969</span><span class="badge ref">D349</span></div>
+      <div class="material">Sweater Knit, 47% Rayon, 28% Polyester, 20% Nylon, 5% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 349-00-4958</div>
+    </div>
+  </div>
+</div>
+<div class="section-head sec-BOTTOMS" id="bottoms">
+  <h2>Bottoms</h2>
+  <span class="cnt">31 new / 34 styles</span>
+  <span class="desc">Pants, Skirts, Shorts</span>
+</div>
+<div class="subfilter" id="subfilter-bottoms">
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setDept('bottoms','all',this)">ALL</button>
+    <button data-val="018" data-label="018" onclick="setDept('bottoms','018',this)">018 (12)</button>
+    <button data-val="349" data-label="349" onclick="setDept('bottoms','349',this)">349 (22)</button>
+  </div>
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setCat('bottoms','all',this)">ALL</button>
+    <button data-val="SWEATER" data-label="SWEATER" onclick="setCat('bottoms','SWEATER',this)">SWEATER (2)</button>
+    <button data-val="PANTS" data-label="PANTS" onclick="setCat('bottoms','PANTS',this)">PANTS (5)</button>
+    <button data-val="SKIRTS" data-label="SKIRTS" onclick="setCat('bottoms','SKIRTS',this)">SKIRTS (4)</button>
+    <button data-val="SHORTS" data-label="SHORTS" onclick="setCat('bottoms','SHORTS',this)">SHORTS (1)</button>
+  </div>
+</div>
+<div class="grid">
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="SWEATER">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1011126024" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_936581aa-6db9-4eb6-91e4-1d365b4a55c2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Midi Sweater Skirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011126024" target="_blank" rel="noopener">Women&#39;s Midi Sweater Skirt</a>
+      <div class="price"><span class='sale'>$19.20</span> <s>$32.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-3727</span><span class="badge own">018</span></div>
+      <div class="material">Jacquard Knit, 70% Recycled Polyester, 18% Acrylic, 12% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="PANTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608246" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0c6c0181-c628-4a0a-b649-8effec7a2f09?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Straight Leg Full Easy Trousers" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e12292f1-59b1-4c54-b56d-13b1165c3ee4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608246" target="_blank" rel="noopener">Women&#39;s High-Rise Straight Leg Full Easy Trousers</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">018-04-0888</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 78% Polyester, 18% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="PANTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012305290" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_419b4afd-47e8-47cb-a9de-c9194506c47d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mid-Rise Cropped Taffeta Drawstring Pull-On Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8e3b49a9-9252-44de-a023-faddb1f676ec?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012305290" target="_blank" rel="noopener">Women&#39;s Mid-Rise Cropped Taffeta Drawstring Pull-On Pants</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">018-04-1963</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 52% Cotton, 5% Recycled Cotton, 43% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="PANTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608286" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9ef7370a-d84e-4969-9998-09ad7e9c319e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Straight Leg Easy Trousers" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_bfcd1a93-695e-4aa4-9ea9-412c96b6369d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608286" target="_blank" rel="noopener">Women&#39;s High-Rise Straight Leg Easy Trousers</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">018-04-8032</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="PANTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608228" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9bcd443c-628c-47b0-80a3-4dd656dca6a4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Low-Rise Modern Wide Leg Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_dd64ac52-d8dd-4356-8ba8-17118cbaeed7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608228" target="_blank" rel="noopener">Women&#39;s Low-Rise Modern Wide Leg Pants</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">018-04-8102</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="SKIRTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010493067" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_b8990e62-1fb7-4d90-96fe-67646bb5482a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Lace Trim Midi Mesh Slip Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_60a277c4-05a8-4faf-92b6-c3d0a5340083?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010493067" target="_blank" rel="noopener">Women&#39;s Lace Trim Midi Mesh Slip Skirt</a>
+      <div class="price">$28.00</div>
+      <div class="dpci-row"><span class="dpci">018-05-4259</span><span class="badge own">018</span></div>
+      <div class="material">Satin, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="SKIRTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010493094" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_2289e00d-cd60-4dac-9a2b-355fa2ab7eb4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Leather Midi A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_3efc4ba1-9b68-4dc7-a570-aa522f546616?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010493094" target="_blank" rel="noopener">Women&#39;s Faux Leather Midi A-Line Skirt</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-05-4327</span><span class="badge own">018</span></div>
+      <div class="material">Faux Leather, 100% Polyurethane</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="SKIRTS">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-95296534" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_18646ab6-b296-4623-b9ca-6c2b2ffb2fe4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Midi Circle Skirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95296534" target="_blank" rel="noopener">Women&#39;s Midi Circle Skirt</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-05-4343</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 78% Recycled Polyester, 18% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="018" data-cat="SHORTS">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012183256" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_14a19e6e-da10-4c7d-99dc-d6232623c992?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mid-Rise Modern Pull-On Shorts" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_f4655199-36bf-46f1-a08c-315613f46729?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012183256" target="_blank" rel="noopener">Women&#39;s Mid-Rise Modern Pull-On Shorts</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">018-11-5050</span><span class="badge own">018</span></div>
+      <div class="material">Crepe, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581135" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d206e4a1-2ffd-4a49-8256-881492d245bb?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mid-Rise Faux Suede Trouser Shorts" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_fcd47f2b-0b0e-4b21-90d6-acefda44ed58?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581135" target="_blank" rel="noopener">Women&#39;s Mid-Rise Faux Suede Trouser Shorts</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2669</span><span class="badge ref">D349</span></div>
+      <div class="material">Faux Suede, 94% Recycled Polyester, 6% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581370" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d0264dca-17e0-41a2-a618-6975fc1d9d8a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Lace Midi Asymmetrical Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_51d98652-ee2a-4796-8248-84b4a94785b2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581370" target="_blank" rel="noopener">Women&#39;s High-Rise Lace Midi Asymmetrical Skirt</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2677</span><span class="badge ref">D349</span></div>
+      <div class="material">Lace, 97% Recycled Nylon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013636233" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_3abe3df3-a3fd-473c-a300-0ce214b82662?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mid-Rise Wide Leg Faux Wrap Trousers" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c41f4c38-0342-4c8e-9b51-92132b2f2372?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013636233" target="_blank" rel="noopener">Women&#39;s Mid-Rise Wide Leg Faux Wrap Trousers</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2713</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 43% Lyocell, 41% Rayon, 10% Nylon, 6% Linen</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638521" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_9acbdaa5-fc57-49ca-84dc-51e031275aec?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Contrast Side Stripe Mini Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_44d37b34-8275-475d-92c0-a5c85ef56630?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638521" target="_blank" rel="noopener">Women&#39;s Contrast Side Stripe Mini Skirt</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2717</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364653" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_61a4e97b-929d-41e1-a08e-b31f0b849735?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Ankle Length Chiffon Balloon Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_6f58f7ff-ef7b-40eb-a101-8de80900baef?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364653" target="_blank" rel="noopener">Women&#39;s High-Rise Ankle Length Chiffon Balloon Pants</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2722</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, Chiffon, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364658" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_25175887-64a5-45db-94f0-cd68e41cb43f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Front Pleated Barrel Leg Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1dc9bbec-261e-4dc8-8758-7fdc0b42055f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364658" target="_blank" rel="noopener">Women&#39;s High-Rise Front Pleated Barrel Leg Pants</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2727</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 93% Recycled Polyester, 7% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364671" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_aed36697-4163-4f22-97ba-f17d2f4bddc2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Side Stripe Wide Leg Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8d106c04-2273-4aab-8f6d-33cf3c7f34cd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364671" target="_blank" rel="noopener">Women&#39;s High-Rise Side Stripe Wide Leg Pants</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2734</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 93% Recycled Polyester, 7% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364704" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_723e69b2-53e6-4b78-86c3-3f59ede62c3e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Wrap Detail Wide Leg Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_6b1bf490-a2e3-438d-b06d-6508c0a59760?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364704" target="_blank" rel="noopener">Women&#39;s High-Rise Wrap Detail Wide Leg Pants</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2755</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014364729" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_7b618320-3854-4053-839f-cdc2229ec1d3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Woven Asymmetrical Midi A-Line Skirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364729" target="_blank" rel="noopener">Women&#39;s Woven Asymmetrical Midi A-Line Skirt</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2762</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364759" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_af73f839-2728-44f3-bdf2-57138fc0abbf?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Tie-Waist Midi A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_70eb44b1-3acb-4ae0-b9c3-6b15e6173b09?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364759" target="_blank" rel="noopener">Women&#39;s High-Rise Tie-Waist Midi A-Line Skirt</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2768</span><span class="badge ref">D349</span></div>
+      <div class="material">Non-Woven Fabric, 56% Recycled Polyester, 30% Rayon, 9% Linen, 5% Cotton</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364762" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e3759058-9e17-4f43-a760-a6182299f2f6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Seaming Detail Midi A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_1f6fa2ee-f651-424b-bc25-d616d486843e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364762" target="_blank" rel="noopener">Women&#39;s Seaming Detail Midi A-Line Skirt</a>
+      <div class="price">$34.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2771</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 93% Recycled Polyester, 7% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014364848" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_a4980514-2506-45e4-883c-fe8b5092d2aa?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Button-Front Tab Barrel Leg Pants" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364848" target="_blank" rel="noopener">Women&#39;s High-Rise Button-Front Tab Barrel Leg Pants</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2791</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364853" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_8382d514-50ff-46db-9e4c-958349e2a72f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Super-High Rise Wide Leg Ankle Length Pull-On Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_31969428-f746-4f0a-9960-e41059faa8c7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364853" target="_blank" rel="noopener">Women&#39;s Super-High Rise Wide Leg Ankle Length Pull-On Pants</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2796</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390532" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e9dea574-7c1e-461c-acb7-4fbd90fb031e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Pleated Barrel Leg Ankle Length Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_eafc296a-4dce-46dd-aa85-d9c9a0f83d3d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390532" target="_blank" rel="noopener">Women&#39;s High-Rise Pleated Barrel Leg Ankle Length Pants</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2807</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 86% Recycled Polyester, 10% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390578" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0f54a2f4-c529-4c1d-b0de-9e18b832ca90?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Front Patch Pocket Skinny Flared Trousers" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_4a92de57-ba6b-49aa-9630-c36b3633b33e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390578" target="_blank" rel="noopener">Women&#39;s High-Rise Front Patch Pocket Skinny Flared Trousers</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2835</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 96% Recycled Polyester, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014390600" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_66134a8e-b4f4-4bf8-b5ee-cd4aaa424f75?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Leather Midi Wrap Skirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390600" target="_blank" rel="noopener">Women&#39;s Faux Leather Midi Wrap Skirt</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2847</span><span class="badge ref">D349</span></div>
+      <div class="material">Faux Leather, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014390620" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_0a6a9f8a-f53f-477b-86b9-2928b8121246?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Dual Flap Pocket Mini A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_be50101e-a650-49f6-96e4-e9010fb68bca?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390620" target="_blank" rel="noopener">Women&#39;s High-Rise Dual Flap Pocket Mini A-Line Skirt</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2861</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 86% Recycled Polyester, 10% Rayon, 4% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014390642" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_65eea0c8-8fc1-43f2-9766-124f559c0177?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s High-Rise Faux Leather Barrel Leg Cropped Trousers" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014390642" target="_blank" rel="noopener">Women&#39;s High-Rise Faux Leather Barrel Leg Cropped Trousers</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-2871</span><span class="badge ref">D349</span></div>
+      <div class="material">Knit, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638335" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_768f6e2d-f13b-401a-bb86-72918805482e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Sheer Overlay Midi Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_12fc4974-9b07-4324-bb4a-189ac1ec8929?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638335" target="_blank" rel="noopener">Women&#39;s Sheer Overlay Midi Skirt</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-4444</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638522" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f732da7c-d769-4d1d-abb5-0f3e61dc0373?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Midi Wrap Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_d076fec2-0a66-4df1-878b-2d23f7eec294?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638522" target="_blank" rel="noopener">Women&#39;s Midi Wrap Skirt</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-4512</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 77% Rayon, 20% Nylon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638391" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_b7d7da2b-26cd-4c9e-bee5-f00d25f1a1c2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mid-Rise Rib-Knit Flared Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5ef6f79e-1849-44e3-a691-dc7e2d202760?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638391" target="_blank" rel="noopener">Women&#39;s Mid-Rise Rib-Knit Flared Pants</a>
+      <div class="price">$28.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-4580</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 97% Recycled Polyester, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="bottoms" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638495" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_2758cda3-03d0-44f3-9e8a-852cbbae6ebe?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Gathered Midi A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_eacda97b-635a-48b7-9780-2c1871f6e24c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638495" target="_blank" rel="noopener">Women&#39;s Gathered Midi A-Line Skirt</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">349-01-8482</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 90% Rayon, 10% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="bottoms" data-dept="018" data-cat="SWEATER">
+    <a href="https://www.target.com/p/-/A-1010984842" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_744b0aad-e091-4071-9444-f9ec8868f615?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Maxi Sweater Skirt" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010984842" target="_blank" rel="noopener">Women&#39;s Maxi Sweater Skirt</a>
+      <div class="price"><span class='sale'>$19.20</span> <s>$32.00</s></div>
+      <div class="dpci-row"><span class="dpci">018-13-8864</span><span class="badge own">018</span></div>
+      <div class="material">2 x 2 Rib, 55% Cotton, 35% Recycled Polyester, 7% Nylon, 3% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-13-4318</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="bottoms" data-dept="018" data-cat="PANTS">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608231" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_511ced84-53e5-49ad-b77d-1a573fff69b3?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Modern Wide Leg Pull-On Pants" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_8e107ae4-f7bd-4beb-8a15-8f542c374a88?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608231" target="_blank" rel="noopener">Women&#39;s Modern Wide Leg Pull-On Pants</a>
+      <div class="price">$30.00</div>
+      <div class="dpci-row"><span class="dpci">018-04-3633</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 74% Recycled Polyester, 21% Rayon, 5% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-04-8657, 018-04-8364</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="bottoms" data-dept="018" data-cat="SKIRTS">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011384273" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_60746db1-e082-45b7-8300-f14f072b0c98?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Plaid Midi A-Line Skirt" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ba0ca80b-caf4-4f12-9f03-31fe01bbe158?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011384273" target="_blank" rel="noopener">Women&#39;s Plaid Midi A-Line Skirt</a>
+      <div class="price">$25.00</div>
+      <div class="dpci-row"><span class="dpci">018-05-4412</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-05-4414</div>
+    </div>
+  </div>
+</div>
+<div class="section-head sec-DRESS" id="dress">
+  <h2>Dress</h2>
+  <span class="cnt">22 new / 28 styles</span>
+  <span class="desc">Dresses</span>
+</div>
+<div class="subfilter" id="subfilter-dress">
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setDept('dress','all',this)">ALL</button>
+    <button data-val="018" data-label="018" onclick="setDept('dress','018',this)">018 (8)</button>
+    <button data-val="349" data-label="349" onclick="setDept('dress','349',this)">349 (20)</button>
+  </div>
+  <div class="grp">
+    <button class="active" data-val="all" data-label="ALL" onclick="setCat('dress','all',this)">ALL</button>
+    <button data-val="KNIT" data-label="KNIT" onclick="setCat('dress','KNIT',this)">KNIT (2)</button>
+    <button data-val="WOVEN" data-label="WOVEN" onclick="setCat('dress','WOVEN',this)">WOVEN (6)</button>
+  </div>
+</div>
+<div class="grid">
+  <div class="card" data-new="1" data-section="dress" data-dept="018" data-cat="KNIT">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010608061" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_6683c009-43b9-4697-816f-ea3320a14f13?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruched Maxi Knit Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608061" target="_blank" rel="noopener">Women&#39;s Ruched Maxi Knit Dress</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-6912</span><span class="badge own">018</span></div>
+      <div class="material">Jersey, 95% Recycled Polyester, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608079" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_700e9ac7-e9e7-4b65-ac70-8f6ffeb987c2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mini Bodycon Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_77322e71-1abc-4d49-992f-57e61aa9a561?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608079" target="_blank" rel="noopener">Women&#39;s Mini Bodycon Dress</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-6996</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 93% Cotton, 5% Recycled Cotton, 2% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1010608107" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_e355b6b7-0cb2-4b2a-89fa-f60bbae9c03e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Bell Sleeve Satin Maxi Slip Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608107" target="_blank" rel="noopener">Women&#39;s Bell Sleeve Satin Maxi Slip Dress</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-7004</span><span class="badge own">018</span></div>
+      <div class="material">Satin, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581159" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_8b5e0f9e-21c3-4279-862d-30dc560b96e4?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Faux Suede Drop Waist Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7d152d7a-bbd7-461e-a97f-e63dfa5bc8f6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581159" target="_blank" rel="noopener">Women&#39;s Faux Suede Drop Waist Midi Dress</a>
+      <div class="price">$52.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2868</span><span class="badge ref">D349</span></div>
+      <div class="material">Faux Suede, 94% Recycled Polyester, 6% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581166" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_66fb78b1-6853-41f3-bf72-dafc22667fd7?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Balloon Long Sleeve Chiffon Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_36400c90-a38c-4043-bd90-7c41650e01b1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581166" target="_blank" rel="noopener">Women&#39;s Balloon Long Sleeve Chiffon Midi Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2875</span><span class="badge ref">D349</span></div>
+      <div class="material">Chiffon, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013581332" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_00d289ba-78d5-4644-befe-78a6a12662d8?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Flutter Short Sleeve Satin Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_78cc65d0-01b0-4580-8adf-f7172566f2c2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581332" target="_blank" rel="noopener">Women&#39;s Flutter Short Sleeve Satin Midi Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2880</span><span class="badge ref">D349</span></div>
+      <div class="material">Satin, 98% Recycled Polyester, 2% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1013581341" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_71088ce2-6fe0-4d7b-8c5a-397ac94f5947?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Flutter Short Sleeve Lace Midi Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013581341" target="_blank" rel="noopener">Women&#39;s Flutter Short Sleeve Lace Midi Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2889</span><span class="badge ref">D349</span></div>
+      <div class="material">Satin, 50% Viscose, 50% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014236526" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_8e3d78a8-45d1-4cf9-afd5-fc1ef500a9fe?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Pleated Shoulder Maxi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_71ecdf5b-b6d8-4d05-96c5-4cb87f70e456?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014236526" target="_blank" rel="noopener">Women&#39;s Pleated Shoulder Maxi Dress</a>
+      <div class="price">$28.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2910</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 46% Cotton, 46% Modal, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364651" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_05f78b88-27dd-48c1-a728-b8f09261f5e6?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mixed Midi A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ef706a62-cee4-4072-a3d7-45b629572948?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364651" target="_blank" rel="noopener">Women&#39;s Mixed Midi A-Line Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2933</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, Chiffon, 92% Rayon, 8% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1014364716" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_ef5b5217-bb11-4bef-9710-28d5e9b750bf?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Open Back Maxi Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364716" target="_blank" rel="noopener">Women&#39;s Open Back Maxi Dress</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2955</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 93% Recycled Polyester, 7% Nylon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364730" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_fb71896e-f57d-4331-90cc-fb7d1e87b414?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Dolman Short Sleeve Maxi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_3b403455-917c-4aa4-b6a3-a624e99b3941?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364730" target="_blank" rel="noopener">Women&#39;s Dolman Short Sleeve Maxi Dress</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2957</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364753" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_98a9e172-93ad-450e-90cd-1b849aacf439?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Open Back Midi A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_43d44b85-5545-4b39-91d8-2bafda27c257?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364753" target="_blank" rel="noopener">Women&#39;s Open Back Midi A-Line Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2968</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364831" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_299f8137-b59d-4ebf-ab8d-3ecb9af0d1c9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Linen Blend Wrap Full Lined Mini Shift Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_89a65ffa-657d-49fb-91f9-66854b8a1651?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364831" target="_blank" rel="noopener">Women&#39;s Linen Blend Wrap Full Lined Mini Shift Dress</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2986</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 47% Lyocell, 38% Rayon, 9% Nylon, 6% Linen</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1014364860" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_f5deabbe-ac35-4312-bad0-9c36fa779471?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Drop Waist Mixed Midi A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_d4b0aa2d-94b2-4699-b868-cb964df01cf2?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1014364860" target="_blank" rel="noopener">Women&#39;s Drop Waist Mixed Midi A-Line Dress</a>
+      <div class="price">$36.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2997</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, Chiffon, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638325" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_e67d95d8-99bf-413e-bff6-6d91c0a4fd75?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cap Sleeve Asymmetrical Midi A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_549cf4ed-de9a-4553-b452-6c658f078079?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638325" target="_blank" rel="noopener">Women&#39;s Cap Sleeve Asymmetrical Midi A-Line Dress</a>
+      <div class="price">$42.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-3451</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 58% Cotton, 37% Modal, 5% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638356" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_990a16f5-fdef-44c8-bfac-705961ba8bcd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Satin Midi A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_af81b699-90e4-49e1-9e80-72c9ddfa0de8?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638356" target="_blank" rel="noopener">Women&#39;s Satin Midi A-Line Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-3996</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638461" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_bc978b7d-9c2f-4ff7-8ca2-fdbe692d9f4f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Tie-Waist Midi Wrap Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_b9b65342-b5cb-4d4a-81b6-d8b345671668?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638461" target="_blank" rel="noopener">Women&#39;s Tie-Waist Midi Wrap Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-5168</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 60% Cotton, 40% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638486" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_13ce7a4e-b185-4f1b-b6c0-75106706a1df?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cap Sleeve Tweed Mini Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_e3c48114-1e56-4648-9ed6-6a5d01d48e02?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638486" target="_blank" rel="noopener">Women&#39;s Cap Sleeve Tweed Mini Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-5321</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638513" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a008cc2e-7927-4d01-aec2-168e77b51dff?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Sleeve Tuck Pleated Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_7cb51853-9cbe-4342-b070-e8af1cb4ea5b?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638513" target="_blank" rel="noopener">Women&#39;s Short Sleeve Tuck Pleated Midi Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-5629</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 77% Rayon, 20% Nylon, 3% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013638419" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d26b98c5-ae4d-48b7-86c1-02eec07b846f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Vest Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_a5443989-3b63-42b1-a8d6-e8e382ddc79a?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638419" target="_blank" rel="noopener">Women&#39;s Vest Midi Dress</a>
+      <div class="price">$42.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-6946</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 60% Cotton, 40% Rayon</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1013638370" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_6e17e0e4-bdad-4dd3-969f-83a3f70189cb?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Satin Lace Trim Midi Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638370" target="_blank" rel="noopener">Women&#39;s Satin Lace Trim Midi Dress</a>
+      <div class="price">$42.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-7881</span><span class="badge ref">D349</span></div>
+      <div class="material">Woven, 100% Recycled Polyester</div>
+    </div>
+  </div>
+  <div class="card" data-new="1" data-section="dress" data-dept="349" data-cat="">
+    <span class="newribbon">NEW</span>
+    <a href="https://www.target.com/p/-/A-1013638466" target="_blank" rel="noopener"><img src="https://target.scene7.com/is/image/Target/GUEST_9cd7ac78-253c-46ca-9b5e-7667cf13309f?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Long Sleeve Smocked Waist Midi Dress" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013638466" target="_blank" rel="noopener">Women&#39;s Long Sleeve Smocked Waist Midi Dress</a>
+      <div class="price">$46.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-9921</span><span class="badge ref">D349</span></div>
+      <div class="material">Jersey, 62% Rayon, 32% Nylon, 6% Spandex</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="018" data-cat="KNIT">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1012325225" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_fa80aa9f-5a46-4ebe-a0c5-1727106dd170?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ponte V-Neck Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_5c5821e9-0bc4-4318-90b7-c4c39ef2e913?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1012325225" target="_blank" rel="noopener">Women&#39;s Ponte V-Neck Midi Dress</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-7280</span><span class="badge own">018</span></div>
+      <div class="material">Ponte di Roma, 65% Rayon, 30% Nylon, 5% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-03-7277</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-95235318" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_a65b2569-356f-4f47-a549-d2286482cdd5?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Short Flutter Sleeve Ruched Maxi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_bba1183f-9c07-4df5-80eb-30b0155c5fb1?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95235318" target="_blank" rel="noopener">Women&#39;s Short Flutter Sleeve Ruched Maxi Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-6632</span><span class="badge own">018</span></div>
+      <div class="material">Twill, 100% Recycled Polyester</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-03-6639, 018-03-6655</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-95235367" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_c8446dc8-5df2-4d0f-ad6b-89d4b9ab57fd?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Cowl Neck Mini Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_2671e0c3-6658-485d-bcf3-a10a80360435?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-95235367" target="_blank" rel="noopener">Women&#39;s Cowl Neck Mini Dress</a>
+      <div class="price">$40.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-6683</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 68% Recycled Polyester, 28% Rayon, 4% Spandex</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-03-6595, 018-03-6685</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1010608018" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_d57aae2c-7ba3-4749-a0ac-7e9a2e4e6735?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Mini A-Line Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_ec533673-abcc-4f2d-ac73-061ee5d0e58d?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1010608018" target="_blank" rel="noopener">Women&#39;s Mini A-Line Dress</a>
+      <div class="price">$35.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-6869</span><span class="badge own">018</span></div>
+      <div class="material">Faux Leather, 100% Polyurethane</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 349-02-2516</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="018" data-cat="WOVEN">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1011348658" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_126f6dac-e05f-4e83-b1b4-f5efc13c2614?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Handkerchief Hem Midi Slip Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_c7645c38-6d7b-4a6e-a00a-297b5d4fbf0c?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1011348658" target="_blank" rel="noopener">Women&#39;s Handkerchief Hem Midi Slip Dress</a>
+      <div class="price">$38.00</div>
+      <div class="dpci-row"><span class="dpci">018-03-7181</span><span class="badge own">018</span></div>
+      <div class="material">Woven, 100% Polyester</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 018-03-7182</div>
+    </div>
+  </div>
+  <div class="card" data-new="0" data-section="dress" data-dept="349" data-cat="">
+    <a class="imgwrap" href="https://www.target.com/p/-/A-1013526464" target="_blank" rel="noopener"><img class="front" src="https://target.scene7.com/is/image/Target/GUEST_8e418016-cb1a-45d1-9056-5ee1da26b8f9?wid=500&hei=500&fmt=jpeg&qlt=80" alt="Women&#39;s Ruched Bodice Drop Waist Midi Dress" loading="lazy"><img class="back" src="https://target.scene7.com/is/image/Target/GUEST_64bb2ed8-ef23-4c1d-9c82-96aa9b3c062e?wid=500&hei=500&fmt=jpeg&qlt=80" alt="" loading="lazy"></a>
+    <div class="meta">
+      <a class="pname" href="https://www.target.com/p/-/A-1013526464" target="_blank" rel="noopener">Women&#39;s Ruched Bodice Drop Waist Midi Dress</a>
+      <div class="price">$45.00</div>
+      <div class="dpci-row"><span class="dpci">349-02-2856</span><span class="badge ref">D349</span></div>
+      <div class="material">Slub, 40% Rayon, 30% Cotton, 30% Recycled Cotton</div>
+      <div class="same">SAME STYLE &middot; prev DPCI 349-02-2855</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>Sae-A Target11 &middot; D18 A New Day Research &middot; T.com 신상 페이지 기준 스냅샷 (2026-11-04)</footer>
+
+<script>
+var filterState = {
+  newOnly: true,
+  tops: { dept:'all', cat:'all' },
+  bottoms: { dept:'all', cat:'all' },
+  dress: { dept:'all', cat:'all' }
+};
+applyFilters();
+
+function filterCards(mode){
+  filterState.newOnly = (mode === 'new');
+  document.getElementById('filterAll').classList.toggle('active', mode==='all');
+  document.getElementById('filterNew').classList.toggle('active', mode==='new');
+  applyFilters();
+}
+
+function setDept(section, dept, btn){
+  filterState[section].dept = dept;
+  var bar = btn.closest('.grp');
+  bar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (dept !== '018') {
+    filterState[section].cat = 'all';
+    var catBar = bar.parentElement.querySelectorAll('.grp')[1];
+    if (catBar) {
+      catBar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+      catBar.querySelector('button').classList.add('active');
+    }
+  }
+  applyFilters();
+}
+
+function setCat(section, cat, btn){
+  filterState[section].cat = cat;
+  var bar = btn.closest('.grp');
+  bar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (cat !== 'all') {
+    filterState[section].dept = '018';
+    var deptBar = bar.parentElement.querySelectorAll('.grp')[0];
+    if (deptBar) {
+      deptBar.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+      deptBar.querySelectorAll('button')[1].classList.add('active');
+    }
+  }
+  applyFilters();
+}
+
+function applyFilters(){
+  document.querySelectorAll('.card').forEach(function(c){
+    var sec = c.getAttribute('data-section');
+    var st = filterState[sec] || { dept:'all', cat:'all' };
+    var ok = true;
+    if (filterState.newOnly && c.getAttribute('data-new') !== '1') ok = false;
+    if (st.dept !== 'all' && c.getAttribute('data-dept') !== st.dept) ok = false;
+    if (st.cat !== 'all' && c.getAttribute('data-cat') !== st.cat) ok = false;
+    c.classList.toggle('is-hidden', !ok);
+  });
+  ['tops','bottoms','dress'].forEach(updateCounts);
+}
+
+function countCards(section, deptVal, catVal){
+  var cards = document.querySelectorAll('.card[data-section="'+section+'"]');
+  var n = 0;
+  cards.forEach(function(c){
+    if (filterState.newOnly && c.getAttribute('data-new') !== '1') return;
+    if (deptVal !== 'all' && c.getAttribute('data-dept') !== deptVal) return;
+    if (catVal !== 'all' && c.getAttribute('data-cat') !== catVal) return;
+    n++;
+  });
+  return n;
+}
+
+function updateCounts(section){
+  var sf = document.getElementById('subfilter-'+section);
+  if (!sf) return;
+  var grps = sf.querySelectorAll('.grp');
+  var st = filterState[section];
+  if (grps[0]) {
+    grps[0].querySelectorAll('button').forEach(function(b){
+      var v = b.getAttribute('data-val');
+      var label = b.getAttribute('data-label');
+      if (v === 'all') { b.textContent = label; return; }
+      b.textContent = label + ' (' + countCards(section, v, st.cat) + ')';
+    });
+  }
+  if (grps[1]) {
+    grps[1].querySelectorAll('button').forEach(function(b){
+      var v = b.getAttribute('data-val');
+      var label = b.getAttribute('data-label');
+      if (v === 'all') { b.textContent = label; return; }
+      b.textContent = label + ' (' + countCards(section, st.dept, v) + ')';
+    });
+  }
+}
+</script>
+
+</body>
+</html>
